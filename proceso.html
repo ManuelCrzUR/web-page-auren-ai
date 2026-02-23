@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auren AI | Nuestro Proceso</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/0j3QBbLD/3.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --accent-blue: #0066ff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link.active {
+            color: var(--accent-blue);
+        }
+
+        .btn-login {
+            background: var(--accent-blue);
+            box-shadow: 0 4px 15px -5px rgba(0, 102, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(0, 102, 255, 0.5);
+        }
+
+        .btn-contact {
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .step-card {
+            transition: all 0.4s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--accent-blue);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Global Header -->
+    <nav class="fixed top-0 w-full z-[100] p-4 lg:p-6 flex justify-center">
+        <div
+            class="max-w-7xl w-full glass rounded-3xl px-6 py-4 flex justify-between items-center border border-white/5">
+            <div class="flex items-center gap-3">
+                <a href="index.html"><img src="https://i.ibb.co/0j3QBbLD/3.png" alt="Auren AI" class="h-8 w-auto"></a>
+                <span class="text-xl font-black italic tracking-tighter uppercase">AUREN <span
+                        class="text-[var(--accent-blue)]">AI</span></span>
+            </div>
+
+            <div class="hidden lg:flex gap-10">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="proceso.html" class="nav-link active">Nuestro Proceso</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://app.getaurenai.com/login"
+                    class="btn-login px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white">
+                    Iniciar Sesión
+                </a>
+                <a href="https://wa.me/573502270096"
+                    class="btn-contact px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Contactar
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Content -->
+    <header class="pt-48 pb-12 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter italic">¿Cómo lo <span
+                    class="text-[var(--accent-blue)]">hacemos?</span></h1>
+            <p class="text-slate-500 text-sm md:text-base font-bold uppercase tracking-[0.2em]">De cero a ventas
+                automáticas en 4 pasos</p>
+        </div>
+    </header>
+
+    <!-- Process Flow -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Step cards same as before -->
+            <div class="step-card glass p-8 rounded-[2.5rem] relative overflow-hidden">
+                <span class="absolute -top-4 -right-4 text-9xl font-black text-white/5">1</span>
+                <i class="ph ph-link text-4xl text-[var(--accent-blue)] mb-6"></i>
+                <h3 class="text-xl font-black text-white mb-4 uppercase tracking-tighter">Conexión Meta</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Instalamos a Alex directamente en tu número de
+                    WhatsApp Business a través de la API oficial.</p>
+            </div>
+            <div class="step-card glass p-8 rounded-[2.5rem] relative overflow-hidden">
+                <span class="absolute -top-4 -right-4 text-9xl font-black text-white/5">2</span>
+                <i class="ph ph-brain text-4xl text-purple-500 mb-6"></i>
+                <h3 class="text-xl font-black text-white mb-4 uppercase tracking-tighter">Entrenamiento</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Le inyectamos el ADN de tu negocio: precios, servicios
+                    y tono de voz.</p>
+            </div>
+            <div class="step-card glass p-8 rounded-[2.5rem] relative overflow-hidden">
+                <span class="absolute -top-4 -right-4 text-9xl font-black text-white/5">3</span>
+                <i class="ph ph-funnel text-4xl text-cyan-400 mb-6"></i>
+                <h3 class="text-xl font-black text-white mb-4 uppercase tracking-tighter">Filtro BANT</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Alex identifica potencial real de compra antes de
+                    pasarte el lead.</p>
+            </div>
+            <div class="step-card glass p-8 rounded-[2.5rem] relative overflow-hidden">
+                <span class="absolute -top-4 -right-4 text-9xl font-black text-white/5">4</span>
+                <i class="ph ph-rocket-launch text-4xl text-orange-500 mb-6"></i>
+                <h3 class="text-xl font-black text-white mb-4 uppercase tracking-tighter">¡Live!</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Lanzamos el bot y empiezas a recibir leads calificados
+                    en tiempo real.</p>
+            </div>
+    </main>
+
+    <!-- Ventajas & Seguridad (MOVIDO DESDE LANDING) -->
+    <section class="py-20 px-6 border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter italic">
+                        Nuestra <br> <span class="text-[var(--accent-blue)]">Ventaja Competitiva</span></h2>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-10">
+                        Auren AI no es solo un bot de respuestas. Es una infraestructura robusta diseñada para la élite
+                        comercial.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="h-10 w-10 glass rounded-xl flex items-center justify-center flex-shrink-0"><i
+                                    class="ph ph-shield-check text-green-400 text-xl"></i></div>
+                            <div>
+                                <h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Seguridad de
+                                    Datos</h4>
+                                <p class="text-slate-500 text-sm italic">Información encriptada y almacenada bajo
+                                    estándares de AWS. Tu data es privada y segura.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="h-10 w-10 glass rounded-xl flex items-center justify-center flex-shrink-0"><i
+                                    class="ph ph-lightning text-cyan-400 text-xl"></i></div>
+                            <div>
+                                <h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Latencia Cero
+                                </h4>
+                                <p class="text-slate-500 text-sm italic">Otras herramientas tardan 30s. Alex responde en
+                                    menos de 3s, manteniendo el lead caliente.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="h-10 w-10 glass rounded-xl flex items-center justify-center flex-shrink-0"><i
+                                    class="ph ph-tree-structure text-purple-400 text-xl"></i></div>
+                            <div>
+                                <h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Estructura BANT
+                                    Real</h4>
+                                <p class="text-slate-500 text-sm italic">Filtramos leads por presupuesto y necesidad
+                                    real, no solo chateamos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass p-1 rounded-[3rem] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+                        class="rounded-[2.8rem] opacity-30 brightness-150" alt="Security Map">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 text-center border-t border-white/5">
+        <span class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">AUREN AI S.A.S. | 2026</span>
+    </footer>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</body>
+
+</html>
