@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,32 +15,35 @@
         :root {
             --bg-dark: #020617;
             --accent-blue: #0066ff;
-            --accent-soft: #4E6AAD;
         }
+
         body {
             background-color: var(--bg-dark);
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #f8fafc;
             overflow-x: hidden;
         }
+
         h1,
         h2,
         h3 {
             font-family: 'Outfit', sans-serif;
         }
+
         .glass {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
         .text-gradient {
             background: linear-gradient(135deg, #fff 30%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .nav-link {
-            position: relative;
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
@@ -47,139 +51,348 @@
             color: #94a3b8;
             transition: color 0.3s;
         }
+
         .nav-link:hover {
             color: #fff;
         }
+
         .nav-link.active {
             color: var(--accent-blue);
         }
-        .btn-main {
+
+        .btn-login {
             background: var(--accent-blue);
-            box-shadow: 0 4px 20px -5px rgba(0, 102, 255, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px -5px rgba(0, 102, 255, 0.4);
+            transition: all 0.3s ease;
         }
-        .btn-main:hover {
+
+        .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(0, 102, 255, 0.6);
+            box-shadow: 0 8px 25px -5px rgba(0, 102, 255, 0.5);
         }
+
+        .btn-contact {
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-10px);
+        }
+
         .hero-orb {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
-            filter: blur(80px);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
             z-index: -1;
         }
     </style>
 </head>
+
 <body class="antialiased">
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-[100] p-6 lg:p-8 flex justify-center">
-        <div class="max-w-7xl w-full glass rounded-3xl px-8 py-4 flex justify-between items-center">
+
+    <!-- Global Header -->
+    <nav class="fixed top-0 w-full z-[100] p-4 lg:p-6 flex justify-center">
+        <div
+            class="max-w-7xl w-full glass rounded-3xl px-6 py-4 flex justify-between items-center border border-white/5">
             <div class="flex items-center gap-3">
-                <img src="https://i.ibb.co/0j3QBbLD/3.png" alt="Auren AI" class="h-8 w-auto">
+                <a href="landing.html"><img src="https://i.ibb.co/0j3QBbLD/3.png" alt="Auren AI" class="h-8 w-auto"></a>
                 <span class="text-xl font-black italic tracking-tighter uppercase">AUREN <span
                         class="text-[var(--accent-blue)]">AI</span></span>
             </div>
-            <!-- desktop menu -->
-            <div class="hidden md:flex gap-10">
+
+            <div class="hidden lg:flex gap-10">
                 <a href="landing.html" class="nav-link active">Inicio</a>
                 <a href="proceso.html" class="nav-link">Nuestro Proceso</a>
                 <a href="demo.html" class="nav-link">Ver Demo</a>
             </div>
+
             <div class="flex items-center gap-4">
                 <a href="https://app.getaurenai.com/login"
-                    class="hidden sm:block text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors">
+                    class="btn-login px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white">
                     Iniciar Sesión
                 </a>
                 <a href="https://wa.me/573502270096"
-                    class="btn-main px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white">
-                    Contactar
+                    class="btn-contact px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Contactar
                 </a>
             </div>
         </div>
     </nav>
+
     <!-- Hero Section -->
-    <section class="min-h-screen pt-40 md:pt-48 pb-20 px-6 relative flex items-center">
-        <div class="hero-orb top-[10%] left-[-10%]"></div>
-        <div class="hero-orb bottom-[10%] right-[-10%]"></div>
+    <section class="min-h-screen pt-40 pb-20 px-6 relative flex items-center">
+        <div class="hero-orb w-96 h-96 bg-blue-600 top-10 left-10"></div>
+        <div class="hero-orb w-96 h-96 bg-purple-600 bottom-10 right-10"></div>
+
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div class="text-center lg:text-left">
-                <div
-                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black text-[var(--accent-blue)] uppercase tracking-[0.2em] mb-8">
-                    <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-                    Agentes de Venta 24/7
-                </div>
                 <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
-                    Tus ventas en <br> <span class="text-gradient">piloto automático.</span>
+                    Tu negocio <br> nunca vuelve a <span class="text-gradient">dormir.</span>
                 </h1>
                 <p class="text-slate-400 text-base md:text-xl mb-12 max-w-xl leading-relaxed mx-auto lg:mx-0">
-                    Implementamos a Alex, una IA diseñada para prospectar, calificar y cerrar leads en segundos a través
-                    de WhatsApp.
+                    Alex es el agente de IA que atiende, califica y cierra tus leads en WhatsApp las 24 horas del día.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                    <a href="demo.html"
-                        class="btn-main px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.15em] text-white">
-                        Lanzar Demo Gratis
+                    <a href="#precios"
+                        class="btn-login px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest text-white">
+                        Empezar Ahora
                     </a>
-                    <a href="proceso.html"
-                        class="glass px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.15em] text-slate-300 hover:bg-white/5 transition-all">
-                        ¿Cómo funciona?
+                    <a href="demo.html"
+                        class="glass px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest text-slate-300 border-white/10 hover:bg-white/5 transition-all">
+                        Ver Demo
                     </a>
                 </div>
             </div>
             <div class="hidden lg:block relative">
-                <div
-                    class="glass p-4 rounded-[4rem] border-white/5 transform rotate-3 hover:rotate-0 transition-transform duration-700">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1632&auto=format&fit=crop"
-                        class="rounded-[3rem] opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
-                        alt="Supercharged AI">
-                    <div class="absolute -bottom-6 -left-6 glass p-6 rounded-3xl border-t-white/10 shadow-2xl max-w-xs">
-                        <p class="text-[10px] uppercase font-black text-[var(--accent-blue)] mb-2">Impacto Real</p>
-                        <p class="text-xs text-slate-300 italic font-medium">"Redujimos el tiempo de respuesta de 4
-                            horas a 3 segundos."</p>
+                <img src="https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1600&auto=format&fit=crop"
+                    class="rounded-[4rem] glass p-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
+                    alt="IA Visual">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ¿Quiénes Somos? / ¿Qué Hacemos? (REFINADO UI/UX) -->
+    <section id="nosotros" class="py-24 px-6 relative overflow-hidden bg-slate-950/20">
+        <!-- Decoration Orbs -->
+        <div
+            class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+
+                <!-- Columna Izquierda: Visual Mockup -->
+                <div class="relative group order-2 lg:order-1">
+                    <div
+                        class="relative glass rounded-[2.5rem] p-6 border-white/10 shadow-3xl overflow-hidden backdrop-blur-3xl transition-all duration-700 group-hover:scale-[1.02]">
+                        <!-- Simulate Dashboard UI -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-400/20 border border-red-400/40"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-orange-400/20 border border-orange-400/40">
+                                </div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-400/20 border border-green-400/40"></div>
+                            </div>
+                            <div
+                                class="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-[8px] font-black tracking-widest text-slate-500 uppercase">
+                                Live Analytics</div>
+                        </div>
+
+                        <!-- Dashboard Content Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="glass p-4 rounded-2xl border-white/5">
+                                <p class="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1">Cierre
+                                    Final</p>
+                                <div class="text-xl font-black text-white">87.4%</div>
+                                <div class="mt-2 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-[var(--accent-blue)] w-[87%]"></div>
+                                </div>
+                            </div>
+                            <div class="glass p-4 rounded-2xl border-white/5">
+                                <p class="text-[9px] text-slate-500 uppercase font-black tracking-widest mb-1">Leads
+                                    BANT</p>
+                                <div class="text-xl font-black text-blue-400">+1.2k</div>
+                                <div class="mt-2 flex gap-1 items-end h-4">
+                                    <div class="w-1.5 bg-blue-500/20 h-2 rounded-sm"></div>
+                                    <div class="w-1.5 bg-blue-500/40 h-3 rounded-sm"></div>
+                                    <div class="w-1.5 bg-blue-500/60 h-4 rounded-sm"></div>
+                                    <div class="w-1.5 bg-[var(--accent-blue)] h-3 rounded-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sentiment Summary -->
+                        <div class="bg-blue-600/5 border border-blue-500/10 p-5 rounded-3xl relative">
+                            <div class="absolute -top-3 -left-3 glass p-2 rounded-xl text-blue-400"><i
+                                    class="ph ph-brain text-lg"></i></div>
+                            <h5 class="text-[11px] font-black uppercase tracking-widest text-blue-300 mb-3 ml-4">Resumen
+                                de IA (Feedback)</h5>
+                            <p class="text-xs text-slate-400 leading-relaxed italic">
+                                "Tus clientes están pidiendo opciones de financiamiento y mencionan que les gusta la
+                                rapidez de Alex en responder comparado con la competencia."
+                            </p>
+                        </div>
                     </div>
+
+                    <!-- Floating Elements -->
+                    <div class="absolute -bottom-10 -right-10 hidden xl:block animate-float">
+                        <div class="glass px-6 py-5 rounded-[2rem] border-white/10 shadow-2xl backdrop-blur-xl">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400">
+                                    <i class="ph ph-user-check text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-slate-400">Consultor Activo</p>
+                                    <p class="text-xs font-bold text-white tracking-tight">Sugerencia: Lanzar Promo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Texto -->
+                <div class="order-1 lg:order-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
+                        <span class="w-2 h-2 rounded-full bg-[var(--accent-blue)] animate-pulse"></span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-400 leading-none">Más
+                            que un Bot</span>
+                    </div>
+
+                    <h2
+                        class="text-5xl md:text-7xl font-black text-white mb-10 leading-[0.95] tracking-tighter uppercase italic">
+                        La ciencia de <br> <span class="text-gradient">vender más.</span>
+                    </h2>
+
+                    <div class="space-y-10">
+                        <div class="flex gap-6">
+                            <div class="text-3xl font-black text-slate-800 italic shrink-0">01</div>
+                            <div>
+                                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-tighter">Ciclo
+                                    Comercial Completo</h3>
+                                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                                    No somos solo respuestas. Automatizamos desde el saludo inicial hasta la
+                                    clasificación de leads usando <b>estrategias de venta consultiva</b>.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-3xl font-black text-slate-800 italic shrink-0">02</div>
+                            <div>
+                                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-tighter">Tablero de
+                                    Ejecución</h3>
+                                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                                    IA que no solo habla, sino que analiza. Resumimos necesidades, gustos y generamos
+                                    <b>sugerencias de acción</b> para tu negocio.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-3xl font-black text-slate-800 italic shrink-0">03</div>
+                            <div>
+                                <h3 class="text-lg font-black text-white mb-2 uppercase tracking-tighter">ADN
+                                    Empresarial</h3>
+                                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                                    Alex aprende tu catálogo, tus precios y tu tono. Se convierte en un <b>consultor
+                                        24/7</b> indestructible y siempre amable.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios (RE-INTEGRADOS) -->
+    <section id="precios" class="py-16 px-6 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter italic mb-4">Planes
+                    <span class="text-[var(--accent-blue)]">Escalables</span>
+                </h2>
+                <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Invierte en crecimiento
+                    inteligente</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Plan Starter -->
+                <div
+                    class="glass p-10 rounded-[2.5rem] border-2 border-[#0066ff]/50 relative pricing-card flex flex-col transition-all duration-300">
+                    <div
+                        class="absolute -top-5 right-8 bg-orange-500 text-white px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl animate-pulse">
+                        🔥 Popular</div>
+                    <h3 class="text-2xl font-black text-white mb-6">Plan Starter</h3>
+                    <div class="mb-8">
+                        <span class="text-slate-500 text-lg font-bold line-through opacity-50">$150.000</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-black text-white">$70.000</span>
+                            <span class="text-slate-500 text-xs font-bold uppercase italic">COP / Mes</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-[12px] font-medium text-slate-400 flex-grow mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Agente Alex (IA BANT)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Calificación de leads</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Dashboard de control</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Dashboard de control</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Leads calificados al instante en tu correo </li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[var(--accent-blue)]"></i>
+                            Integración Oficial Meta</li>
+                    </ul>
+                    <a href="https://wa.me/573502270096"
+                        class="btn-login py-4 rounded-xl text-center font-black text-[10px] uppercase tracking-widest text-white">Activar
+                        Ahora</a>
+                </div>
+
+                <!-- Business -->
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col opacity-50 pointer-events-none">
+                    <h3 class="text-2xl font-black text-slate-400 mb-6">Plan Business</h3>
+                    <div class="mb-8">
+                        <span class="text-5xl font-black text-slate-500">$300.000</span>
+                        <span class="text-slate-600 text-xs font-bold uppercase italic ml-1">COP / Mes</span>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase font-black tracking-widest">Próximamente</p>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center text-center">
+                    <h3 class="text-2xl font-black text-white mb-4">Enterprise</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-8">Soluciones para grandes corporativos con
+                        integraciones CRM masivas.</p>
+                    <a href="https://wa.me/573502270096"
+                        class="text-[var(--accent-blue)] font-black text-[9px] uppercase tracking-widest">Consultar
+                        experto <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Value Stats -->
-    <section class="py-24 border-y border-white/5 bg-white/[0.01]">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-            <div>
-                <p class="text-5xl font-black text-white mb-2">98%</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Satisfacción</p>
-            </div>
-            <div>
-                <p class="text-5xl font-black text-[var(--accent-blue)] mb-2">24h</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Disponibilidad</p>
-            </div>
-            <div>
-                <p class="text-5xl font-black text-white mb-2">3s</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Respuesta</p>
-            </div>
-            <div>
-                <p class="text-5xl font-black text-[var(--accent-blue)] mb-2">40%</p>
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Más Cierres</p>
+
+    <!-- Tech Partner Band (AL FINAL) -->
+    <section class="py-12 border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-[9px] uppercase font-black tracking-[0.3em] text-slate-500 mb-10">Tecnología de
+                Clase Mundial</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI"
+                    class="h-5 brightness-0 invert">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta"
+                    class="h-5 brightness-0 invert">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-paper-plane text-white text-lg"></i>
+                    <span class="text-white font-black text-sm tracking-tighter">RESEND</span>
+                </div>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
-    <footer class="py-20 px-6 text-center">
-        <div class="max-w-7xl mx-auto border-t border-white/5 pt-12">
-            <div class="mb-8">
-                <span class="text-2xl font-black italic tracking-tighter uppercase">AUREN <span
-                        class="text-[var(--accent-blue)]">AI</span></span>
-            </div>
-            <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 mb-6">
-                Bogotá, Colombia | © 2026 AUREN AI S.A.S.
-            </p>
-            <div class="flex justify-center gap-6 text-slate-500 text-lg">
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
+    <footer class="py-20 px-6 text-center border-t border-white/5">
+        <span class="text-xl font-black italic tracking-tighter uppercase mb-6 block">AUREN <span
+                class="text-[var(--accent-blue)]">AI</span></span>
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">Bogotá, Colombia | © 2026 AUREN AI
+            S.A.S.</p>
     </footer>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
+
 </html>
