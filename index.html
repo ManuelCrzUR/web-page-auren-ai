@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,28 +16,33 @@
             --bg-dark: #020617;
             --accent-blue: #0066ff;
         }
+
         body {
             background-color: var(--bg-dark);
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #f8fafc;
             overflow-x: hidden;
         }
+
         h1,
         h2,
         h3 {
             font-family: 'Outfit', sans-serif;
         }
+
         .glass {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
         .text-gradient {
             background: linear-gradient(135deg, #fff 30%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .nav-link {
             font-size: 11px;
             font-weight: 800;
@@ -45,34 +51,42 @@
             color: #94a3b8;
             transition: color 0.3s;
         }
+
         .nav-link:hover {
             color: #fff;
         }
+
         .nav-link.active {
             color: var(--accent-blue);
         }
+
         .btn-login {
             background: var(--accent-blue);
             box-shadow: 0 4px 15px -5px rgba(0, 102, 255, 0.4);
             transition: all 0.3s ease;
         }
+
         .btn-login:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px -5px rgba(0, 102, 255, 0.5);
         }
+
         .btn-contact {
             border: 2px solid var(--accent-blue);
             color: var(--accent-blue);
             transition: all 0.3s ease;
         }
+
         .btn-contact:hover {
             background: var(--accent-blue);
             color: white;
         }
+
         .pricing-card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-10px);
         }
+
         .hero-orb {
             position: absolute;
             border-radius: 50%;
@@ -82,7 +96,9 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
+
     <!-- Global Header -->
     <nav class="fixed top-0 w-full z-[100] p-4 lg:p-6 flex justify-center">
         <div
@@ -92,10 +108,13 @@
                 <span class="text-xl font-black italic tracking-tighter uppercase">AUREN <span
                         class="text-[var(--accent-blue)]">AI</span></span>
             </div>
+
             <div class="hidden lg:flex gap-10">
                 <a href="index.html" class="nav-link active">Inicio</a>
                 <a href="proceso.html" class="nav-link">Nuestro Proceso</a>
+                <a href="#privacidad" class="nav-link">Privacidad</a>
             </div>
+
             <div class="flex items-center gap-4">
                 <a href="https://app.getaurenai.com/login"
                     class="btn-login px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white">
@@ -108,10 +127,12 @@
             </div>
         </div>
     </nav>
+
     <!-- Hero Section -->
     <section class="min-h-screen pt-40 pb-20 px-6 relative flex items-center">
         <div class="hero-orb w-96 h-96 bg-blue-600 top-10 left-10"></div>
         <div class="hero-orb w-96 h-96 bg-purple-600 bottom-10 right-10"></div>
+
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div class="text-center lg:text-left">
                 <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
@@ -134,14 +155,19 @@
             </div>
         </div>
     </section>
+
+
+
     <!-- ¿Quiénes Somos? / ¿Qué Hacemos? (REFINADO UI/UX) -->
     <section id="nosotros" class="py-24 px-6 relative overflow-hidden bg-slate-950/20">
         <!-- Decoration Orbs -->
         <div
             class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none">
         </div>
+
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
+
                 <!-- Columna Izquierda: Visual Mockup -->
                 <div class="relative group order-2 lg:order-1">
                     <div
@@ -158,6 +184,7 @@
                                 class="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-[8px] font-black tracking-widest text-slate-500 uppercase">
                                 Live Analytics</div>
                         </div>
+
                         <!-- Dashboard Content Stats -->
                         <div class="grid grid-cols-2 gap-4 mb-8">
                             <div class="glass p-4 rounded-2xl border-white/5">
@@ -180,6 +207,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Sentiment Summary -->
                         <div class="bg-blue-600/5 border border-blue-500/10 p-5 rounded-3xl relative">
                             <div class="absolute -top-3 -left-3 glass p-2 rounded-xl text-blue-400"><i
@@ -192,6 +220,7 @@
                             </p>
                         </div>
                     </div>
+
                     <!-- Floating Elements -->
                     <div class="absolute -bottom-10 -right-10 hidden xl:block animate-float">
                         <div class="glass px-6 py-5 rounded-[2rem] border-white/10 shadow-2xl backdrop-blur-xl">
@@ -208,6 +237,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Columna Derecha: Texto -->
                 <div class="order-1 lg:order-2">
                     <div
@@ -216,10 +246,12 @@
                         <span class="text-[10px] font-black uppercase tracking-widest text-blue-400 leading-none">Más
                             que un Bot</span>
                     </div>
+
                     <h2
                         class="text-5xl md:text-7xl font-black text-white mb-10 leading-[0.95] tracking-tighter uppercase italic">
                         La ciencia de <br> <span class="text-gradient">vender más.</span>
                     </h2>
+
                     <div class="space-y-10">
                         <div class="flex gap-6">
                             <div class="text-3xl font-black text-slate-800 italic shrink-0">01</div>
@@ -256,9 +288,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
     <!-- Precios (RE-INTEGRADOS) -->
     <section id="precios" class="py-16 px-6 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
@@ -269,6 +303,7 @@
                 <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Invierte en crecimiento
                     inteligente</p>
             </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Plan Starter -->
                 <div
@@ -301,6 +336,7 @@
                         class="btn-login py-4 rounded-xl text-center font-black text-[10px] uppercase tracking-widest text-white">Activar
                         Ahora</a>
                 </div>
+
                 <!-- Business -->
                 <div class="glass p-10 rounded-[2.5rem] flex flex-col opacity-50 pointer-events-none">
                     <h3 class="text-2xl font-black text-slate-400 mb-6">Plan Business</h3>
@@ -310,6 +346,7 @@
                     </div>
                     <p class="text-xs text-slate-500 uppercase font-black tracking-widest">Próximamente</p>
                 </div>
+
                 <!-- Enterprise -->
                 <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center text-center">
                     <h3 class="text-2xl font-black text-white mb-4">Enterprise</h3>
@@ -322,6 +359,7 @@
             </div>
         </div>
     </section>
+
     <!-- Tech Partner Band (AL FINAL) -->
     <section class="py-12 border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto px-6">
@@ -340,6 +378,85 @@
             </div>
         </div>
     </section>
+
+    <!-- Política de Privacidad -->
+    <section id="privacidad" class="py-24 px-6 bg-slate-950/40 relative">
+        <div class="max-w-4xl mx-auto glass p-10 lg:p-16 rounded-[2.5rem] border-white/5 shadow-2xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter italic mb-4">Política
+                    de <span class="text-gradient">Privacidad</span> y Datos</h2>
+                <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Última actualización: 11 de
+                    enero de 2026 | Auren AI</p>
+            </div>
+
+            <div class="space-y-8 text-slate-400 text-sm md:text-base leading-relaxed">
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">1. Identificación del
+                        Responsable</h3>
+                    <p>Auren AI, plataforma de automatización de servicios de mensajería (en adelante "la Empresa"), es
+                        responsable del tratamiento de los datos personales que se recolecten a través de nuestra
+                        integración con la API de WhatsApp Business.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">2. Datos Recolectados</h3>
+                    <p class="mb-2">Auren AI procesa la siguiente información proporcionada voluntariamente por el
+                        usuario al interactuar con nuestro chatbot:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Número de teléfono móvil.</li>
+                        <li>Nombre de perfil de WhatsApp.</li>
+                        <li>Contenido de los mensajes enviados (texto, imágenes o documentos).</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">3. Finalidad del Tratamiento
+                    </h3>
+                    <p class="mb-2">Los datos recolectados tienen como única finalidad:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Prestar el servicio de atención al cliente automatizada mediante Inteligencia Artificial.
+                        </li>
+                        <li>Mantener el historial de la conversación para ofrecer respuestas contextualizadas (Memoria
+                            del Bot).</li>
+                        <li>Mejorar la precisión de las respuestas del asistente.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">4. Uso de la API de OpenAI
+                    </h3>
+                    <p>Para procesar las respuestas, el texto de los mensajes (sin datos de identificación personal
+                        directa más allá del contexto del chat) es enviado a los modelos de lenguaje de OpenAI. Estos
+                        datos no son utilizados por OpenAI para entrenar sus modelos generales de acuerdo con sus
+                        políticas de API para empresas.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">5. Derechos del Usuario</h3>
+                    <p class="mb-2">De acuerdo con la Ley 1581 de 2012 (Ley de Protección de Datos en Colombia), los
+                        usuarios tienen derecho a:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Conocer, actualizar y rectificar sus datos personales.</li>
+                        <li>Solicitar la eliminación de su historial de conversación de nuestras bases de datos en
+                            cualquier momento escribiendo la palabra <b>"ELIMINAR"</b> en el chat.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">6. Seguridad</h3>
+                    <p>Implementamos medidas técnicas de seguridad (alojamiento en Supabase con encriptación) para
+                        proteger los datos contra acceso no autorizado o pérdida.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">7. Contacto</h3>
+                    <p>Para cualquier duda sobre esta política, puede contactarnos a través del mismo canal de WhatsApp
+                        o al correo electrónico de soporte configurado en la plataforma.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-20 px-6 text-center border-t border-white/5">
         <span class="text-xl font-black italic tracking-tighter uppercase mb-6 block">AUREN <span
@@ -347,6 +464,8 @@
         <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">Bogotá, Colombia | © 2026 AUREN AI
             S.A.S.</p>
     </footer>
+
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
+
 </html>
