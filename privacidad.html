@@ -4,81 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auren AI | Política de Privacidad</title>
+    <title>Auren AI | Privacidad y Datos</title>
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-dark: #020617;
-            --accent-blue: #0066ff;
+            --bg-ink: #070b14;
+            --bg-panel: #10182a;
+            --text-main: #f3f5f8;
+            --text-soft: #aeb8ca;
+            --line-soft: rgba(255, 255, 255, 0.14);
+            --signal: #00d4ff;
+            --heat: #ff6b2e;
+            --pulse: #d7ff33;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-dark);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #f8fafc;
+            margin: 0;
+            color: var(--text-main);
+            background: radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.16), transparent 32%),
+                radial-gradient(circle at 80% 8%, rgba(255, 107, 46, 0.22), transparent 35%),
+                radial-gradient(circle at 84% 82%, rgba(215, 255, 51, 0.13), transparent 30%),
+                linear-gradient(145deg, #050812 0%, #0f1a2e 45%, #090f1e 100%);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3 {
-            font-family: 'Outfit', sans-serif;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.35;
+            mix-blend-mode: soft-light;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 0.5px, transparent 0.5px);
+            background-size: 3px 3px;
+            z-index: 1;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        main,
+        nav,
+        footer {
+            position: relative;
+            z-index: 2;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 30%, var(--accent-blue) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .display {
+            font-family: 'Syne', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-shell {
+            background: linear-gradient(90deg, rgba(12, 20, 36, 0.9), rgba(16, 24, 42, 0.75));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--line-soft);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
         }
 
         .nav-link {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            transition: color 220ms ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-main);
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 14px;
             font-size: 11px;
             font-weight: 800;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #94a3b8;
-            transition: color 0.3s;
+            padding: 12px 18px;
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
         }
 
-        .nav-link:hover {
-            color: #fff;
+        .cta-primary {
+            color: #040c16;
+            background: linear-gradient(110deg, var(--pulse), #ffffb5);
+            box-shadow: 0 10px 24px rgba(215, 255, 51, 0.35);
         }
 
-        .nav-link.active {
-            color: var(--accent-blue);
-        }
-
-        .btn-login {
-            background: var(--accent-blue);
-            box-shadow: 0 4px 15px -5px rgba(0, 102, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-login:hover {
+        .cta-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px -5px rgba(0, 102, 255, 0.5);
+            box-shadow: 0 16px 32px rgba(215, 255, 51, 0.45);
         }
 
-        .btn-contact {
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
-            transition: all 0.3s ease;
+        .cta-secondary {
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            color: var(--signal);
+            background: rgba(0, 212, 255, 0.08);
         }
 
-        .btn-contact:hover {
-            background: var(--accent-blue);
-            color: white;
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+            border-color: var(--signal);
+            box-shadow: 0 12px 26px rgba(0, 212, 255, 0.25);
+        }
+
+        .section-shell {
+            border: 1px solid var(--line-soft);
+            background: linear-gradient(150deg, rgba(10, 16, 29, 0.72), rgba(10, 16, 29, 0.45));
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+        }
+
+        .policy-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--line-soft);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+        }
+
+        .policy-item h3 {
+            color: var(--signal);
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -86,141 +149,112 @@
 <body class="antialiased">
 
     <!-- Global Header -->
-    <nav class="fixed top-0 w-full z-[100] p-4 lg:p-6 flex justify-center">
-        <div
-            class="max-w-7xl w-full glass rounded-3xl px-6 py-4 flex justify-between items-center border border-white/5">
-            <div class="flex items-center gap-3">
-                <a href="index.html"><img src="logo.png" alt="Auren AI" class="h-8 w-auto"></a>
-                <span class="text-xl font-black italic tracking-tighter uppercase">AUREN <span
-                        class="text-[var(--accent-blue)]">AI</span></span>
-            </div>
+    <nav class="fixed top-0 left-0 right-0 z-[100] p-4 lg:p-6 flex justify-center">
+        <div class="nav-shell max-w-7xl w-full rounded-3xl px-5 lg:px-7 py-4 flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 shrink-0">
+                <img src="logo.png" alt="Auren AI" class="h-8 w-auto">
+                <span class="display text-xl font-extrabold uppercase">AUREN AI</span>
+            </a>
 
-            <div class="hidden lg:flex gap-10">
+            <div class="nav-links flex items-center gap-10">
                 <a href="index.html" class="nav-link">Inicio</a>
                 <a href="proceso.html" class="nav-link">Nuestro Proceso</a>
                 <a href="privacidad.html" class="nav-link active">Privacidad</a>
             </div>
 
-            <div class="flex items-center gap-4">
-                <a href="https://app.getaurenai.com/login"
-                    class="btn-login px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white">
-                    Iniciar Sesión
-                </a>
-                <a href="https://wa.me/573502270096"
-                    class="btn-contact px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-                    <i class="fab fa-whatsapp"></i> Contactar
-                </a>
+            <div class="flex items-center gap-3 lg:gap-4">
+                <a href="https://app.getaurenai.com/login" class="cta-secondary">Iniciar Sesión</a>
+                <a href="https://wa.me/573502270096" class="cta-primary"><i class="fab fa-whatsapp"></i> Contactar</a>
             </div>
         </div>
     </nav>
 
     <!-- Header Content -->
     <header class="pt-48 pb-12 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter italic">Nuestra <span
-                    class="text-[var(--accent-blue)]">Promesa</span></h1>
-            <p class="text-slate-500 text-sm md:text-base font-bold uppercase tracking-[0.2em]">Transparencia, Seguridad
-                y Privacidad</p>
+        <div class="max-w-4xl mx-auto">
+            <p class="text-[10px] uppercase tracking-[0.3em] font-black text-[var(--heat)] mb-4">Compromiso Ético</p>
+            <h1 class="display text-5xl md:text-8xl font-black mb-8 leading-[0.9] uppercase italic">
+                Nuestra <span class="text-[var(--signal)]">Promesa</span>
+            </h1>
+            <p class="text-[var(--text-soft)] text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Transparencia total en el manejo de tus datos y seguridad de grado empresarial para tu tranquilidad.
+            </p>
         </div>
     </header>
 
     <!-- Política de Privacidad -->
-    <section class="py-12 px-6 relative mb-24">
-        <div class="max-w-4xl mx-auto glass p-10 lg:p-16 rounded-[2.5rem] border-white/5 shadow-2xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter italic mb-4">Política
-                    de <span class="text-gradient">Privacidad</span> y Datos</h2>
-                <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Última actualización: 11 de
-                    enero de 2026 | Auren AI</p>
+    <main class="py-12 px-6 relative mb-24">
+        <div class="max-w-4xl mx-auto policy-card border-white/5 shadow-2xl">
+            <div class="text-center mb-16">
+                <h2 class="display text-3xl md:text-5xl text-white uppercase italic mb-4">Política de <span class="text-[var(--signal)]">Privacidad</span></h2>
+                <div class="h-1 w-20 bg-gradient-to-r from-[var(--signal)] to-[var(--heat)] mx-auto mb-6"></div>
+                <p class="text-[var(--text-soft)] text-[10px] font-black uppercase tracking-[0.2em]">Última actualización: 11 de enero de 2026</p>
             </div>
 
-            <div class="space-y-8 text-slate-400 text-sm md:text-base leading-relaxed">
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">1. Identificación del
-                        Responsable</h3>
-                    <p>Auren AI, plataforma de automatización de servicios de mensajería (en adelante "la Empresa"), es
-                        responsable del tratamiento de los datos personales que se recolecten a través de nuestra
-                        integración con la API de WhatsApp Business.</p>
+            <div class="space-y-12 text-[var(--text-soft)] text-sm md:text-base leading-relaxed">
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">1. Identificación del Responsable</h3>
+                    <p>Auren AI, plataforma de automatización de servicios de mensajería (en adelante "la Empresa"), es responsable del tratamiento de los datos personales que se recolecten a través de nuestra integración con la API de WhatsApp Business.</p>
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">2. Datos Recolectados</h3>
-                    <p class="mb-2">Auren AI procesa la siguiente información proporcionada voluntariamente por el
-                        usuario al interactuar con nuestro chatbot:</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Número de teléfono móvil.</li>
-                        <li>Nombre de perfil de WhatsApp.</li>
-                        <li>Contenido de los mensajes enviados (texto, imágenes o documentos).</li>
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">2. Datos Recolectados</h3>
+                    <p class="mb-4">Procesamos la siguiente información proporcionada voluntariamente al interactuar con nuestro sistema inteligente:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-[var(--signal)] mt-1"></i> Número de teléfono móvil.</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-[var(--signal)] mt-1"></i> Nombre de perfil de WhatsApp.</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-caret-right text-[var(--signal)] mt-1"></i> Contenido de los mensajes (texto, imágenes o documentos).</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">3. Finalidad del Tratamiento
-                    </h3>
-                    <p class="mb-2">Los datos recolectados tienen como única finalidad:</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Prestar el servicio de atención al cliente automatizada mediante Inteligencia Artificial.
-                        </li>
-                        <li>Mantener el historial de la conversación para ofrecer respuestas contextualizadas (Memoria
-                            del Bot).</li>
-                        <li>Mejorar la precisión de las respuestas del asistente.</li>
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">3. Finalidad del Tratamiento</h3>
+                    <p class="mb-4">Toda recolección tiene un propósito comercial y operativo específico:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[var(--pulse)] mt-1"></i> Atención al cliente automatizada mediante IA.</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[var(--pulse)] mt-1"></i> Mantenimiento de historial para respuestas contextuales inteligentes.</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[var(--pulse)] mt-1"></i> Mejora continua de la precisión del asistente.</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">4. Uso de la API de OpenAI
-                    </h3>
-                    <p>Para procesar las respuestas, el texto de los mensajes (sin datos de identificación personal
-                        directa más allá del contexto del chat) es enviado a los modelos de lenguaje de OpenAI. Estos
-                        datos no son utilizados por OpenAI para entrenar sus modelos generales de acuerdo con sus
-                        políticas de API para empresas.</p>
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">4. Uso de la API de OpenAI</h3>
+                    <p>Para el procesamiento de lenguaje, el contenido de los mensajes es analizado por los modelos de OpenAI. Estos datos son procesados de forma privada y <b>no son utilizados</b> para el entrenamiento de modelos generales, garantizando la confidencialidad de tu estrategia.</p>
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">5. Derechos del Usuario</h3>
-                    <p class="mb-2">De acuerdo con la Ley 1581 de 2012 (Ley de Protección de Datos en Colombia), los
-                        usuarios tienen derecho a:</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Conocer, actualizar y rectificar sus datos personales.</li>
-                        <li>Solicitar la eliminación de su historial de conversación de nuestras bases de datos en
-                            cualquier momento escribiendo la palabra <b>"ELIMINAR"</b> en el chat.</li>
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">5. Derechos del Usuario</h3>
+                    <p class="mb-4">Bajo la Ley 1581 de 2012, mantienes soberanía total sobre tus datos:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3"><i class="fas fa-user-shield text-[var(--signal)] mt-1"></i> Derecho a conocer, actualizar y rectificar información.</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-trash-alt text-[var(--heat)] mt-1"></i> Derecho a revocatoria: escribe <b>"ELIMINAR"</b> en el chat para borrar tu historial.</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">6. Seguridad</h3>
-                    <p>Implementamos medidas técnicas de seguridad (alojamiento en Supabase con encriptación) para
-                        proteger los datos contra acceso no autorizado o pérdida.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-2">7. Contacto</h3>
-                    <p>Para cualquier duda sobre esta política, puede contactarnos a través del mismo canal de WhatsApp
-                        o al correo electrónico de soporte configurado en la plataforma.</p>
+                <div class="policy-item">
+                    <h3 class="display text-lg uppercase mb-4">6. Seguridad</h3>
+                    <p>Utilizamos infraestructura distribuida con encriptación de extremo a extremo y almacenamiento seguro en Supabase para prevenir cualquier acceso no autorizado.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="py-24 border-t border-white/5 relative overflow-hidden bg-[var(--bg-dark)]">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="text-left font-heading">
-                <div class="text-3xl font-black text-white italic uppercase mb-4">AUREN <span
-                        class="text-[var(--accent-blue)]">AI</span></div>
-                <p class="text-xs text-slate-500 uppercase tracking-widest leading-loose">
+    <footer class="px-5 pb-12">
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-16 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="display text-3xl uppercase mb-4">Auren AI</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-[var(--text-soft)] leading-relaxed">
                     Transformando la comunicación comercial <br> con inteligencia de vanguardia. <br> Bogotá, Colombia.
                 </p>
             </div>
             <div class="md:text-right">
-                <div class="flex md:justify-end gap-10 text-slate-400 text-xl mb-8">
-                    <a href="https://wa.me/573502270096" class="hover:text-[var(--accent-blue)] transition-colors"><i
-                            class="fab fa-whatsapp"></i></a>
+                <div class="flex md:justify-end gap-10 text-[var(--text-soft)] text-xl mb-8">
+                    <a href="https://wa.me/573502270096" class="hover:text-[var(--signal)] transition-colors"><i class="fab fa-whatsapp"></i></a>
                     <i class="fab fa-linkedin-in hover:text-white cursor-pointer transition-colors"></i>
                     <i class="fab fa-instagram hover:text-white cursor-pointer transition-colors"></i>
                 </div>
-                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">© 2026 Inteligencia
-                    Comercial S.A.S.</p>
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">© 2026 AUREN AI S.A.S.</p>
             </div>
         </div>
     </footer>
