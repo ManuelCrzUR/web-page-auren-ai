@@ -1,315 +1,405 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auren AI | Cómo lo hacemos</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auren AI | Cómo funciona</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root{
+    --ink: #0a0e1f;
+    --panel: #121a35;
+    --panel-2: #19224a;
+    --paper: #f5f7fb;
+    --muted: #97a0bd;
+    --muted-2: #626a89;
+    --line: rgba(245,247,251,0.09);
+    --line-strong: rgba(245,247,251,0.18);
+    --glow: #93a7ff;
+    --glow-bright: #b9c4ff;
+    --glow-soft: rgba(147,167,255,0.14);
+    --glow-line: rgba(147,167,255,0.38);
+    --sys: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
 
-    <style>
-        :root {
-            --bg-ink: #070b14;
-            --bg-panel: #10182a;
-            --text-main: #f3f5f8;
-            --text-soft: #aeb8ca;
-            --line-soft: rgba(255, 255, 255, 0.14);
-            --signal: #00d4ff;
-            --heat: #ff6b2e;
-            --pulse: #d7ff33;
-        }
+  *{ box-sizing:border-box; }
+  html{ background:var(--ink); }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sys);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    opacity:0;
+    transform:translateY(8px) scale(.996);
+  }
+  body.page-ready{ opacity:1; transform:translateY(0) scale(1); transition:opacity .5s var(--ease), transform .5s var(--ease); }
+  body.page-leaving{ opacity:0; transform:translateY(-8px) scale(.996); transition:opacity .32s var(--ease), transform .32s var(--ease); }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
 
-        * {
-            box-sizing: border-box;
-        }
+  ::selection{ background:var(--glow-soft); color:var(--paper); }
 
-        body {
-            margin: 0;
-            color: var(--text-main);
-            background: radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.16), transparent 32%),
-                radial-gradient(circle at 80% 8%, rgba(255, 107, 46, 0.22), transparent 35%),
-                radial-gradient(circle at 84% 82%, rgba(215, 255, 51, 0.13), transparent 30%),
-                linear-gradient(145deg, #050812 0%, #0f1a2e 45%, #090f1e 100%);
-            font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
-        }
+  /* ---------- type scale ---------- */
+  .eyebrow{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .eyebrow.glow{ color:var(--glow-bright); }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.35;
-            mix-blend-mode: soft-light;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 0.5px, transparent 0.5px);
-            background-size: 3px 3px;
-            z-index: 1;
-        }
+  h1,h2,h3{
+    margin:0;
+    font-weight:800;
+    letter-spacing:-0.03em;
+    line-height:1.02;
+    text-wrap:balance;
+  }
+  h1{ font-size:clamp(2.4rem, 5.6vw, 4.6rem); }
+  h2{ font-size:clamp(2rem, 4vw, 3.1rem); }
+  h3{ font-size:1.15rem; letter-spacing:-0.01em; }
 
-        main,
-        nav,
-        footer {
-            position: relative;
-            z-index: 2;
-        }
+  p{ margin:0; }
+  .lede{
+    font-size:clamp(1.02rem, 1.6vw, 1.2rem);
+    line-height:1.55;
+    color:var(--muted);
+    max-width:38rem;
+  }
+  .body-sm{ font-size:.95rem; line-height:1.6; color:var(--muted); max-width:34rem; }
 
-        .display {
-            font-family: 'Syne', sans-serif;
-            letter-spacing: -0.03em;
-        }
+  .max{ max-width:1180px; margin:0 auto; padding:0 24px; }
 
-        .nav-shell {
-            background: linear-gradient(90deg, rgba(12, 20, 36, 0.9), rgba(16, 24, 42, 0.75));
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--line-soft);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-        }
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal.d1{ transition-delay:.08s; }
+  .reveal.d2{ transition-delay:.16s; }
+  .reveal.d3{ transition-delay:.24s; }
+  .reveal.d4{ transition-delay:.32s; }
+  @media (prefers-reduced-motion: reduce){
+    body{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    * { animation-duration:.001ms !important; animation-iteration-count:1 !important; }
+  }
 
-        .nav-link {
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--text-soft);
-            transition: color 220ms ease;
-        }
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:16px 20px;
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 18px;
+    border-radius:16px;
+    border:1px solid var(--line);
+    background:rgba(16,21,42,0.6);
+    backdrop-filter:blur(18px) saturate(140%);
+    -webkit-backdrop-filter:blur(18px) saturate(140%);
+    transition:background .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .nav.scrolled .nav-inner{
+    background:rgba(11,15,32,0.82);
+    border-color:var(--line-strong);
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:9px; color:var(--paper); }
+  .brand-mark{ flex-shrink:0; }
+  .brand span{ font-weight:800; font-size:.95rem; letter-spacing:.01em; }
 
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--text-main);
-        }
+  .nav-links{ display:flex; align-items:center; gap:34px; }
+  .nav-link{
+    font-size:12.5px; font-weight:600; letter-spacing:.02em; color:var(--muted);
+    transition:color .2s var(--ease); position:relative; padding:4px 0;
+  }
+  .nav-link::after{
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px;
+    background:var(--paper); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s var(--ease);
+  }
+  .nav-link:hover, .nav-link.active{ color:var(--paper); }
+  .nav-link.active::after, .nav-link:hover::after{ transform:scaleX(1); }
 
-        .cta-primary,
-        .cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border-radius: 14px;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            padding: 12px 18px;
-            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        }
+  .nav-cta{ display:flex; align-items:center; gap:10px; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border-radius:11px; font-size:13px; font-weight:600; letter-spacing:.01em;
+    padding:10px 18px; border:1px solid transparent; cursor:pointer;
+    transition:transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease), background .22s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--paper); color:var(--ink); }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 10px 26px rgba(245,247,251,0.18); background:#ffffff; }
+  .btn-ghost{ border-color:var(--line-strong); color:var(--paper); background:transparent; }
+  .btn-ghost:hover{ transform:translateY(-1px); border-color:var(--muted); background:rgba(245,247,251,0.05); }
+  .btn-block{ width:100%; }
 
-        .cta-primary {
-            color: #040c16;
-            background: linear-gradient(110deg, var(--pulse), #ffffb5);
-            box-shadow: 0 10px 24px rgba(215, 255, 51, 0.35);
-        }
+  .burger{ display:none; width:38px; height:38px; border-radius:10px; border:1px solid var(--line-strong); background:transparent; align-items:center; justify-content:center; }
+  .burger span, .burger span::before, .burger span::after{
+    content:""; display:block; width:16px; height:1.5px; background:var(--paper); position:relative; transition:transform .25s var(--ease), opacity .25s var(--ease);
+  }
+  .burger span::before, .burger span::after{ position:absolute; left:0; }
+  .burger span::before{ top:-5px; }
+  .burger span::after{ top:5px; }
+  .burger.open span{ background:transparent; }
+  .burger.open span::before{ transform:translateY(5px) rotate(45deg); }
+  .burger.open span::after{ transform:translateY(-5px) rotate(-45deg); }
 
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 32px rgba(215, 255, 51, 0.45);
-        }
+  .mobile-panel{
+    position:fixed; inset:0; z-index:90; background:rgba(9,12,26,0.97);
+    backdrop-filter:blur(10px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+    opacity:0; pointer-events:none; transition:opacity .3s var(--ease);
+  }
+  .mobile-panel.open{ opacity:1; pointer-events:auto; }
+  .mobile-panel a{ font-size:1.6rem; font-weight:700; letter-spacing:-0.01em; color:var(--paper); }
+  .mobile-panel .btn{ margin-top:10px; }
 
-        .cta-secondary {
-            border: 1px solid rgba(0, 212, 255, 0.5);
-            color: var(--signal);
-            background: rgba(0, 212, 255, 0.08);
-        }
+  @media (max-width:900px){
+    .nav-links{ display:none; }
+    .nav-cta .btn-ghost{ display:none; }
+    .burger{ display:flex; }
+  }
 
-        .cta-secondary:hover {
-            transform: translateY(-2px);
-            border-color: var(--signal);
-            box-shadow: 0 12px 26px rgba(0, 212, 255, 0.25);
-        }
+  /* ---------- page header ---------- */
+  .page-header{ padding:168px 0 30px; text-align:center; position:relative; }
+  .page-header::before{
+    content:"";
+    position:absolute; top:-120px; left:50%; transform:translateX(-50%);
+    width:900px; height:460px; pointer-events:none;
+    background:radial-gradient(closest-side, var(--glow-soft), transparent 72%);
+    opacity:.5; z-index:0;
+  }
+  .page-header .max{ position:relative; z-index:1; }
+  .page-header h1{ margin:20px auto 0; max-width:760px; }
+  .page-header .lede{ margin:20px auto 0; text-align:center; }
 
-        .section-shell {
-            border: 1px solid var(--line-soft);
-            background: linear-gradient(150deg, rgba(10, 16, 29, 0.72), rgba(10, 16, 29, 0.45));
-            backdrop-filter: blur(8px);
-            border-radius: 30px;
-        }
+  /* ---------- section shells ---------- */
+  section, header{ position:relative; z-index:1; }
+  .band{ padding:90px 0; }
+  .band.alt{ background:linear-gradient(180deg, transparent, rgba(255,255,255,0.015) 12%, rgba(255,255,255,0.015) 88%, transparent); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 
-        .step-card {
-            transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
-            background: var(--bg-panel);
-            border: 1px solid var(--line-soft);
-            border-radius: 2.5rem;
-        }
+  .section-head{ margin-bottom:52px; }
+  .section-head.center{ text-align:center; }
+  .section-head h2{ margin-top:10px; }
 
-        .step-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--signal);
-            box-shadow: 0 24px 46px rgba(0, 0, 0, 0.32);
-        }
+  /* ---------- steps ---------- */
+  .steps-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; }
+  @media (max-width:960px){ .steps-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .steps-grid{ grid-template-columns:1fr; } }
+  .step{
+    background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:30px;
+    transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .step:hover{ transform:translateY(-4px); border-color:var(--line-strong); box-shadow:0 20px 40px rgba(0,0,0,0.28); }
+  .step-num{ font-size:11px; font-weight:800; letter-spacing:.1em; color:var(--muted-2); }
+  .step-icon{ width:38px; height:38px; margin:16px 0 18px; display:block; }
+  .step h3{ font-size:1.05rem; }
+  .step p{ margin-top:10px; font-size:.88rem; line-height:1.6; color:var(--muted); }
 
-        .display-gradient {
-            background: linear-gradient(135deg, #fff 40%, var(--signal) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  /* ---------- trust strip ---------- */
+  .trust-strip{ display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; }
+  @media (max-width:800px){ .trust-strip{ grid-template-columns:1fr; gap:32px; } }
+  .trust-item h3{ font-size:1.02rem; }
+  .trust-item p{ margin-top:10px; font-size:.88rem; line-height:1.6; color:var(--muted); }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+  /* ---------- closing cta ---------- */
+  .closing{ text-align:center; }
+  .closing .lede{ margin:16px auto 0; text-align:center; }
+  .closing-ctas{ margin-top:30px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
 
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @media (max-width: 1024px) {
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+  /* ---------- footer ---------- */
+  footer{ padding:56px 0 40px; border-top:1px solid var(--line); }
+  .footer-row{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; }
+  .footer-brand{ font-weight:800; font-size:1.05rem; }
+  .footer-meta{ font-size:11.5px; color:var(--muted-2); letter-spacing:.03em; }
+  .footer-links{ display:flex; gap:22px; }
+  .footer-links a{ font-size:12px; color:var(--muted); transition:color .2s; }
+  .footer-links a:hover{ color:var(--paper); }
+</style>
+<noscript><style>body{ opacity:1 !important; transform:none !important; }</style></noscript>
 </head>
+<body>
 
-<body class="antialiased">
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img class="brand-mark" src="logo.png" width="26" height="26" alt="" aria-hidden="true">
+      <span>AUREN AI</span>
+    </a>
 
-    <!-- Global Header -->
-    <nav class="fixed top-0 left-0 right-0 z-[100] p-4 lg:p-6 flex justify-center">
-        <div class="nav-shell max-w-7xl w-full rounded-3xl px-5 lg:px-7 py-4 flex items-center justify-between gap-4">
-            <a href="index.html" class="flex items-center gap-3 shrink-0">
-                <img src="logo.png" alt="Auren AI" class="h-8 w-auto">
-                <span class="display text-xl font-extrabold uppercase">AUREN AI</span>
-            </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="proceso.html" class="nav-link active">Proceso</a>
+      <a href="privacidad.html" class="nav-link">Privacidad</a>
+    </div>
 
-            <div class="nav-links flex items-center gap-10">
-                <a href="index.html" class="nav-link">Inicio</a>
-                <a href="proceso.html" class="nav-link active">Nuestro Proceso</a>
-                <a href="privacidad.html" class="nav-link">Privacidad</a>
-            </div>
+    <div class="nav-cta">
+      <a href="https://app.getaurenai.com/login" class="btn btn-ghost">Iniciar sesión</a>
+      <a href="https://wa.me/573502270096" class="btn btn-primary">Hablar con un asesor</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
 
-            <div class="flex items-center gap-3 lg:gap-4">
-                <a href="https://app.getaurenai.com/login" class="cta-secondary">Iniciar Sesión</a>
-                <a href="https://wa.me/573502270096" class="cta-primary"><i class="fab fa-whatsapp"></i> Contactar</a>
-            </div>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="index.html">Inicio</a>
+  <a href="proceso.html">Proceso</a>
+  <a href="privacidad.html">Privacidad</a>
+  <a href="https://wa.me/573502270096" class="btn btn-primary">Hablar con un asesor</a>
+</div>
+
+<header class="page-header">
+  <div class="max">
+    <span class="eyebrow glow reveal in">Así se pone a andar</span>
+    <h1 class="reveal in d1">De cero a contestando solo, en unos días.</h1>
+    <p class="lede reveal in d2">No es un proyecto de meses ni necesitas saber de tecnología. Así es como Alex empieza a trabajar en tu negocio.</p>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="max">
+      <div class="steps-grid reveal">
+        <article class="step">
+          <span class="step-num">01</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="var(--glow-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+          <h3>Te conectamos</h3>
+          <p>Instalamos a Alex directo en tu WhatsApp Business, el mismo número que ya usas. Nada de números nuevos ni trucos raros que te lo puedan bloquear.</p>
+        </article>
+        <article class="step">
+          <span class="step-num">02</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="var(--glow-bright)"><circle cx="5" cy="7" r="1.5"/><rect x="9" y="6" width="11" height="2" rx="1"/><circle cx="5" cy="12" r="1.5"/><rect x="9" y="11" width="11" height="2" rx="1"/><circle cx="5" cy="17" r="1.5"/><rect x="9" y="16" width="8" height="2" rx="1"/></svg>
+          <h3>Le enseñamos tu negocio</h3>
+          <p>Le pasamos tu catálogo, tus precios y cómo hablas con tus clientes. Una sola vez, y desde ahí ya sabe responder como alguien de tu equipo.</p>
+        </article>
+        <article class="step">
+          <span class="step-num">03</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="var(--glow-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>
+          <h3>Distingue quién va en serio</h3>
+          <p>No todos los que escriben quieren comprar ya. Alex identifica quién sí está listo, para que sepas a quién llamar primero.</p>
+        </article>
+        <article class="step">
+          <span class="step-num">04</span>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="var(--glow-bright)"><polygon points="13,2 4,14 11,14 10,22 20,10 13,10"/></svg>
+          <h3>Queda contestando solo</h3>
+          <p>Se activa y empieza a contestar de inmediato. Tú solo entras cuando ya hay alguien listo para cerrar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="max">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Por qué funciona</span>
+        <h2>No es magia. Es que está bien hecho.</h2>
+      </div>
+      <div class="trust-strip reveal">
+        <div class="trust-item">
+          <h3>Contesta en menos de 3 segundos</h3>
+          <p>Mientras más rápido contestas, más caliente sigue el cliente. Alex no se demora nunca, ni siquiera en la hora pico.</p>
         </div>
-    </nav>
-
-    <!-- Header Content -->
-    <header class="pt-48 pb-12 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-[10px] uppercase tracking-[0.3em] font-black text-[var(--signal)] mb-4">Ingeniería de Ventas</p>
-            <h1 class="display text-5xl md:text-8xl font-black mb-8 leading-[0.9] uppercase italic">
-                ¿Cómo lo <span class="display-gradient">hacemos?</span>
-            </h1>
-            <p class="text-[var(--text-soft)] text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
-                De cero a ventas automáticas en 4 pasos estratégicos diseñados para escalar tu negocio sin fricción.
-            </p>
+        <div class="trust-item">
+          <h3>Tus datos son tuyos</h3>
+          <p>La información de tus clientes se guarda cifrada y no se comparte con nadie. Es tuya, punto.</p>
         </div>
-    </header>
-
-    <!-- Process Flow -->
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="step-card p-10 relative overflow-hidden group">
-                <span class="absolute -top-6 -right-4 text-[10rem] font-black text-white/5 group-hover:text-white/10 transition-colors">1</span>
-                <div class="h-14 w-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-8">
-                    <i class="fas fa-link text-2xl text-[var(--signal)]"></i>
-                </div>
-                <h3 class="display text-2xl text-white mb-4 uppercase">Conexión Meta</h3>
-                <p class="text-sm text-[var(--text-soft)] leading-relaxed">
-                    Instalamos a Alex directamente en tu número de WhatsApp Business a través de la API oficial para máxima estabilidad.
-                </p>
-            </div>
-
-            <div class="step-card p-10 relative overflow-hidden group">
-                <span class="absolute -top-6 -right-4 text-[10rem] font-black text-white/5 group-hover:text-white/10 transition-colors">2</span>
-                <div class="h-14 w-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-8">
-                    <i class="fas fa-brain text-2xl text-purple-400"></i>
-                </div>
-                <h3 class="display text-2xl text-white mb-4 uppercase">Entrenamiento</h3>
-                <p class="text-sm text-[var(--text-soft)] leading-relaxed">
-                    Le inyectamos el ADN de tu negocio: cargamos tu catálogo, definimos precios y pulimos su tono de voz comercial.
-                </p>
-            </div>
-
-            <div class="step-card p-10 relative overflow-hidden group">
-                <span class="absolute -top-6 -right-4 text-[10rem] font-black text-white/5 group-hover:text-white/10 transition-colors">3</span>
-                <div class="h-14 w-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-8">
-                    <i class="fas fa-filter text-2xl text-cyan-400"></i>
-                </div>
-                <h3 class="display text-2xl text-white mb-4 uppercase">Filtro BANT</h3>
-                <p class="text-sm text-[var(--text-soft)] leading-relaxed">
-                    Alex identifica potencial real de compra (Presupuesto, Autoridad, Necesidad, Tiempo) antes de notificarte.
-                </p>
-            </div>
-
-            <div class="step-card p-10 relative overflow-hidden group">
-                <span class="absolute -top-6 -right-4 text-[10rem] font-black text-white/5 group-hover:text-white/10 transition-colors">4</span>
-                <div class="h-14 w-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-8">
-                    <i class="fas fa-rocket text-2xl text-[var(--heat)]"></i>
-                </div>
-                <h3 class="display text-2xl text-white mb-4 uppercase">¡Live!</h3>
-                <p class="text-sm text-[var(--text-soft)] leading-relaxed">
-                    Lanzamos el sistema y empiezas a recibir leads calificados y citas agendadas en tiempo real.
-                </p>
-            </div>
+        <div class="trust-item">
+          <h3>No te manda cualquier cosa</h3>
+          <p>Solo te avisa cuando alguien de verdad quiere comprar. Nada de notificaciones por cada saludo.</p>
         </div>
-    </main>
+      </div>
+    </div>
+  </section>
 
-    <!-- Ventajas & Seguridad -->
-    <section class="py-24 px-6 mt-12 mb-20">
-        <div class="max-w-7xl mx-auto section-shell p-8 lg:p-16">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h2 class="display text-4xl md:text-6xl text-white mb-8 uppercase leading-[0.95] italic">
-                        Nuestra <span class="text-[var(--heat)]">Ventaja</span> <br> Competitiva
-                    </h2>
-                    <p class="text-[var(--text-soft)] text-lg leading-relaxed mb-10">
-                        Auren AI no es solo un bot de respuestas. Es una infraestructura robusta diseñada para la élite comercial que no se conforma con lo genérico.
-                    </p>
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="h-12 w-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-shield-alt text-green-400 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="display text-sm text-white uppercase tracking-widest mb-2">Seguridad de Datos</h4>
-                                <p class="text-[var(--text-soft)] text-sm leading-relaxed">Información encriptada y almacenada bajo estándares de AWS. Tu data es privada, soberana y segura.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="h-12 w-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-bolt text-cyan-400 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="display text-sm text-white uppercase tracking-widest mb-2">Latencia Cero</h4>
-                                <p class="text-[var(--text-soft)] text-sm leading-relaxed">Mientras otros tardan 30s, Alex responde en menos de 3s. Mantén la atención del lead en su punto más alto.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="h-12 w-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-sitemap text-purple-400 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="display text-sm text-white uppercase tracking-widest mb-2">Estructura Comercial Real</h4>
-                                <p class="text-[var(--text-soft)] text-sm leading-relaxed">No chateamos por chatear. Filtramos leads por presupuesto y necesidad real, entregando prospectos listos para cerrar.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-[var(--signal)] to-[var(--heat)] rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                    <div class="relative section-shell overflow-hidden rounded-[3rem]">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
-                            class="w-full opacity-40 brightness-125 hover:scale-105 transition-transform duration-700" alt="Security Infrastructure">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="band closing">
+    <div class="max">
+      <h2 class="reveal">¿Listo para dejar de perder ventas?</h2>
+      <p class="lede reveal d1">Actívalo esta semana y empieza a contestar rápido desde ya.</p>
+      <div class="closing-ctas reveal d2">
+        <a href="index.html#precios" class="btn btn-primary">Ver planes</a>
+        <a href="https://wa.me/573502270096" class="btn btn-ghost">Hablar con un asesor</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- Footer -->
-    <footer class="px-5 pb-12">
-        <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <p class="display text-2xl uppercase">Auren AI</p>
-            <p class="text-xs uppercase tracking-[0.16em] text-[var(--text-soft)]">Bogotá, Colombia | © 2026 Auren AI S.A.S.</p>
-        </div>
-    </footer>
+<footer>
+  <div class="max footer-row">
+    <span class="footer-brand">AUREN AI</span>
+    <div class="footer-links">
+      <a href="proceso.html">Proceso</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="https://wa.me/573502270096">WhatsApp</a>
+    </div>
+    <span class="footer-meta">Bogotá, Colombia · © 2026 Auren AI S.A.S.</span>
+  </div>
+</footer>
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script>
+  // page transition: fade the whole page in on load/back-forward, and
+  // fade out before following internal links so navigation feels continuous
+  function showPage(){ document.body.classList.remove('page-leaving'); document.body.classList.add('page-ready'); }
+  window.addEventListener('pageshow', showPage);
+  requestAnimationFrame(showPage);
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) === '#') return;
+    if (a.target === '_blank' || a.hasAttribute('download')) return;
+    if (/^https?:\/\//i.test(href) || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    e.preventDefault();
+    document.body.classList.remove('page-ready');
+    document.body.classList.add('page-leaving');
+    setTimeout(function(){ window.location.href = href; }, 260);
+  });
+
+  // nav blur on scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }, { passive:true });
+
+  // mobile menu
+  var burger = document.getElementById('burger');
+  var panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // scroll reveal
+  var targets = document.querySelectorAll('.reveal:not(.in)');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:.15 });
+    targets.forEach(function(t){ io.observe(t); });
+  } else {
+    targets.forEach(function(t){ t.classList.add('in'); });
+  }
+</script>
 </body>
-
 </html>
