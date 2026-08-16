@@ -151,19 +151,33 @@
   .burger.open span::before{ transform:translateY(5px) rotate(45deg); }
   .burger.open span::after{ transform:translateY(-5px) rotate(-45deg); }
 
-  .mobile-panel{
-    position:fixed; inset:0; z-index:90; background:rgba(9,12,26,0.97);
-    backdrop-filter:blur(10px);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+  .mobile-backdrop{
+    position:fixed; inset:0; z-index:85; background:rgba(5,7,16,0.7);
     opacity:0; pointer-events:none; transition:opacity .3s var(--ease);
   }
-  .mobile-panel.open{ opacity:1; pointer-events:auto; }
-  .mobile-panel a{ font-size:1.6rem; font-weight:700; letter-spacing:-0.01em; color:var(--paper); }
-  .mobile-panel .btn{ margin-top:10px; }
+  .mobile-backdrop.open{ opacity:1; pointer-events:auto; }
+
+  .mobile-panel{
+    position:fixed; top:0; right:0; height:100%; width:100%; max-width:320px;
+    background:var(--ink); z-index:90; padding:110px 28px 40px;
+    border-left:1px solid var(--line-strong);
+    box-shadow:-30px 0 80px rgba(0,0,0,0.5);
+    display:flex; flex-direction:column; gap:2px; overflow-y:auto;
+    transform:translateX(100%); transition:transform .35s var(--ease);
+  }
+  .mobile-panel.open{ transform:translateX(0); }
+  .mobile-panel a{
+    font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--paper);
+    padding:14px 2px; border-bottom:1px solid var(--line);
+  }
+  .mobile-panel .btn{ width:100%; margin-top:14px; border-bottom:none; padding:13px 18px; }
+  .mobile-panel a.btn-primary{ color:var(--ink); }
+  .mobile-panel .btn:first-of-type{ margin-top:22px; }
+  @media (prefers-reduced-motion: reduce){ .mobile-panel{ transition:none; } .mobile-backdrop{ transition:none; } }
 
   @media (max-width:900px){
     .nav-links{ display:none; }
-    .nav-cta .btn-ghost{ display:none; }
+    .nav-cta > .btn{ display:none; }
     .burger{ display:flex; }
   }
 
@@ -379,10 +393,12 @@
   </div>
 </nav>
 
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
 <div class="mobile-panel" id="mobilePanel">
   <a href="index.html">Inicio</a>
   <a href="proceso.html">Proceso</a>
   <a href="privacidad.html">Privacidad</a>
+  <a href="https://app.getaurenai.com/login" class="btn btn-ghost">Iniciar sesión</a>
   <a href="https://wa.me/573502270096" class="btn btn-primary">Hablar con un asesor</a>
 </div>
 
@@ -637,16 +653,25 @@
   // mobile menu
   var burger = document.getElementById('burger');
   var panel = document.getElementById('mobilePanel');
+  var mobileBackdrop = document.getElementById('mobileBackdrop');
   burger.addEventListener('click', function(){
     var open = panel.classList.toggle('open');
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open);
+    mobileBackdrop.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileBackdrop.addEventListener('click', function(){
+    panel.classList.remove('open');
+    burger.classList.remove('open');
+    mobileBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
   });
   panel.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       panel.classList.remove('open');
       burger.classList.remove('open');
+      mobileBackdrop.classList.remove('open');
       document.body.style.overflow = '';
     });
   });
