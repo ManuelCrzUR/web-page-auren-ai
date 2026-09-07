@@ -211,13 +211,29 @@
   .policy-item li{ font-size:.92rem; color:#dfe1e6; padding-left:20px; position:relative; line-height:1.55; }
   .policy-item li::before{ content:""; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%; background:var(--glow-bright); }
   .policy-item strong{ color:var(--paper); }
+  .policy-item h4{ margin:20px 0 0; font-size:.98rem; font-weight:700; color:var(--paper); letter-spacing:-0.01em; }
+  .policy-item a{ color:var(--glow-bright); border-bottom:1px solid var(--glow-line); transition:border-color .2s var(--ease); }
+  .policy-item a:hover{ border-color:var(--glow-bright); }
+  .pendiente{ background:rgba(255,196,0,0.14); border:1px solid rgba(255,196,0,0.42); color:#ffd27a; padding:1px 7px; border-radius:6px; font-size:.85em; font-weight:600; }
+
+  /* ---------- consolidated legal page ---------- */
+  [id]{ scroll-margin-top:110px; }
+  .legal-toc{ background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:24px 26px; margin-bottom:26px; }
+  .legal-toc p{ font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted-2); font-weight:700; margin:0 0 14px; }
+  .legal-toc ol{ margin:0; padding:0; list-style:none; counter-reset:toc; display:flex; flex-direction:column; gap:11px; }
+  .legal-toc li{ counter-increment:toc; font-size:.96rem; line-height:1.4; color:#dfe1e6; }
+  .legal-toc li::before{ content:counter(toc) ". "; color:var(--glow-bright); font-weight:700; }
+  .legal-toc a{ color:var(--paper); border-bottom:1px solid var(--glow-line); transition:border-color .2s var(--ease); }
+  .legal-toc a:hover{ border-color:var(--glow-bright); }
+  .policy-card + .policy-card{ margin-top:26px; }
+  .policy-card > .section-title{ margin:0 0 8px; font-size:1.55rem; font-weight:800; letter-spacing:-0.02em; line-height:1.1; }
 
   /* ---------- footer ---------- */
   footer{ padding:56px 0 40px; border-top:1px solid var(--line); }
   .footer-row{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; }
   .footer-brand{ font-weight:800; font-size:1.05rem; }
   .footer-meta{ font-size:11.5px; color:var(--muted-2); letter-spacing:.03em; }
-  .footer-links{ display:flex; gap:22px; }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:22px; }
   .footer-links a{ font-size:12px; color:var(--muted); transition:color .2s; }
   .footer-links a:hover{ color:var(--paper); }
 </style>
@@ -264,62 +280,295 @@
   <div class="max">
     <span class="eyebrow glow reveal in">Transparencia</span>
     <h1 class="reveal in d1">Cómo cuidamos tus datos</h1>
-    <p class="lede reveal in d2">Confiarnos tu WhatsApp y el de tus clientes da respeto. Así es, en detalle, cómo lo cuidamos.</p>
+    <p class="lede reveal in d2">Confiarnos tu WhatsApp, Instagram o Messenger —y el de tus clientes— merece respeto. Acá está, en detalle, nuestra política de privacidad, cómo pedir la eliminación de datos y las condiciones del servicio.</p>
   </div>
 </header>
 
 <main>
   <section class="band">
     <div class="max" style="max-width:820px;">
-      <div class="policy-card reveal">
-        <p class="policy-updated">Última actualización: 16 de agosto de 2026</p>
+
+      <nav class="legal-toc reveal" aria-label="Contenido de esta página">
+        <p>Contenido</p>
+        <ol>
+          <li><a href="#politica-privacidad">Política de Privacidad y Tratamiento de Datos</a></li>
+          <li><a href="#eliminacion-de-datos">Eliminación de datos</a></li>
+          <li><a href="#condiciones-del-servicio">Condiciones del Servicio</a></li>
+        </ol>
+      </nav>
+
+      <!-- ============================================================= -->
+      <!-- SECCIÓN 1 · POLÍTICA DE PRIVACIDAD Y TRATAMIENTO DE DATOS     -->
+      <!-- ============================================================= -->
+      <div class="policy-card reveal" id="politica-privacidad">
+        <h2 class="section-title">Política de Privacidad y Tratamiento de Datos</h2>
+        <p class="policy-updated">Última actualización: 7 de septiembre de 2026</p>
 
         <div class="policy-list">
           <div class="policy-item">
-            <h3>1. Quién es responsable</h3>
-            <p>Auren AI es la plataforma responsable del tratamiento de los datos personales que se recogen a través de nuestra integración con la API de WhatsApp Business.</p>
+            <h3>1. Responsable del tratamiento</h3>
+            <p>Auren AI es el nombre comercial bajo el cual <strong>Manuel Cruz Garrote</strong>, persona natural comerciante inscrita en la Cámara de Comercio de Bogotá, presta servicios de automatización de la atención por mensajería (en adelante, «Auren AI» o «nosotros»). Auren AI es responsable del tratamiento de los datos personales que se recolectan a través de su integración con la API de WhatsApp Business y con las APIs de Instagram y Messenger de Meta. Para cualquier asunto de privacidad podés escribirnos a <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a>.</p>
           </div>
 
           <div class="policy-item">
-            <h3>2. Qué datos recogemos</h3>
-            <p>Cuando alguien escribe a tu asistente por WhatsApp, procesamos:</p>
+            <h3>2. A quién se aplica esta política</h3>
+            <p>Auren AI trata datos de dos grupos de personas:</p>
             <ul>
-              <li>Su número de teléfono</li>
-              <li>Su nombre de perfil de WhatsApp</li>
-              <li>El contenido de los mensajes que envía, ya sea texto, imágenes o documentos</li>
+              <li><strong>Usuarios finales:</strong> personas que escriben a un negocio que usa Auren AI a través de WhatsApp, Instagram o Facebook Messenger.</li>
+              <li><strong>Clientes:</strong> los negocios que contratan Auren AI y el personal que administra su cuenta.</li>
+            </ul>
+            <p>Respecto de los mensajes de los usuarios finales, el negocio (Cliente) es el Responsable del tratamiento y Auren AI actúa como Encargado, tratándolos solo conforme a las instrucciones del Cliente y a esta política.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>3. Datos que recolectamos</h3>
+            <h4>De los usuarios finales, al escribir al negocio</h4>
+            <ul>
+              <li>Número de teléfono móvil o identificador de la plataforma (ID de Instagram o de Messenger).</li>
+              <li>Nombre de perfil público de WhatsApp, Instagram o Messenger.</li>
+              <li>Contenido de los mensajes enviados: texto, imágenes y documentos.</li>
+              <li>Fecha, hora y canal de la conversación.</li>
+            </ul>
+            <h4>De los Clientes</h4>
+            <ul>
+              <li>Nombre, correo electrónico y contraseña (almacenada cifrada, nunca en texto plano).</li>
+              <li>Datos del negocio y configuración del asistente (catálogo, precios, tono).</li>
+              <li>Tokens de conexión a WhatsApp, Instagram y Facebook.</li>
+              <li>Registros de uso y de facturación.</li>
             </ul>
           </div>
 
           <div class="policy-item">
-            <h3>3. Para qué los usamos</h3>
-            <p>Toda la información que recogemos tiene un propósito claro:</p>
+            <h3>4. Finalidad del tratamiento</h3>
             <ul>
-              <li>Atender automáticamente a través del asistente de IA</li>
-              <li>Recordar el contexto de la conversación para responder con criterio</li>
-              <li>Mejorar la precisión del asistente con el tiempo</li>
+              <li>Prestar el servicio de atención al cliente automatizada mediante inteligencia artificial.</li>
+              <li>Mantener el historial de la conversación para ofrecer respuestas con contexto (memoria del asistente).</li>
+              <li>Mejorar la precisión de las respuestas del asistente.</li>
+              <li>Avisar al negocio cuando un usuario quiere avanzar con una compra o una cita.</li>
+              <li>Dar soporte, operar y cobrar el servicio, y prevenir fraude y abuso.</li>
+            </ul>
+            <p>No vendemos datos personales ni los usamos para publicidad de terceros.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>5. Uso de la API de OpenAI</h3>
+            <p>Para generar las respuestas, el texto de los mensajes se envía a los modelos de lenguaje de OpenAI. De acuerdo con las políticas de API de OpenAI para empresas, ese contenido no se utiliza para entrenar sus modelos generales.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>6. Con quién compartimos los datos</h3>
+            <p>Solo con proveedores que los tratan por cuenta nuestra, bajo contrato y con el único fin de operar el servicio:</p>
+            <ul>
+              <li><strong>OpenAI</strong> (Estados Unidos) — generación de las respuestas del asistente. El contenido enviado a su API no se usa para entrenar sus modelos.</li>
+              <li><strong>Supabase</strong> (Estados Unidos) — base de datos y almacenamiento de la aplicación, con cifrado.</li>
+              <li><strong>Render</strong> (Estados Unidos) — alojamiento de la aplicación.</li>
+              <li><strong>Google (Google Drive)</strong> — almacenamiento de los documentos recibidos, en la cuenta de Google Drive del propio Cliente.</li>
+              <li><strong>Resend</strong> (Estados Unidos) — envío de correos transaccionales y códigos de verificación.</li>
+              <li><strong>Meta Platforms</strong> — provisión de las APIs de WhatsApp, Instagram y Messenger.</li>
+            </ul>
+            <p>Algunos de estos proveedores están ubicados en Estados Unidos, por lo que ciertos datos se transfieren fuera de Colombia bajo compromisos contractuales que exigen un nivel de protección adecuado. Al usar el servicio, el Cliente y el titular autorizan esta transferencia.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>7. Conservación de los datos</h3>
+            <ul>
+              <li><strong>Historial de conversaciones:</strong> mientras la cuenta del negocio esté activa. Se elimina o anonimiza dentro de los 90 días siguientes a una solicitud verificada de eliminación o al cierre de la cuenta.</li>
+              <li><strong>Documentos:</strong> se guardan en el Google Drive del Cliente; Auren AI conserva solo una referencia interna, que se elimina al cerrar la cuenta.</li>
+              <li><strong>Tokens de los canales conectados:</strong> se eliminan al desconectar el canal o al cerrar la cuenta.</li>
+              <li><strong>Datos de cuenta y de facturación:</strong> durante la relación contractual y, después, por el plazo que exijan las normas comerciales y tributarias colombianas.</li>
             </ul>
           </div>
 
           <div class="policy-item">
-            <h3>4. Cómo usamos OpenAI</h3>
-            <p>Para entender y responder los mensajes, el contenido pasa por los modelos de OpenAI. Esos datos se procesan de forma privada. No se usan para entrenar los modelos generales de OpenAI, así que la información de tu negocio se mantiene confidencial.</p>
+            <h3>8. Seguridad</h3>
+            <p>Ciframos la información en tránsito (HTTPS) y en reposo (alojamiento en Supabase con cifrado), y aplicamos control de acceso por roles. Ningún método de transmisión o almacenamiento es completamente infalible, pero mantenemos medidas acordes al riesgo.</p>
           </div>
 
           <div class="policy-item">
-            <h3>5. Tus derechos</h3>
-            <p>Bajo la Ley 1581 de 2012 de Colombia, tienes control total sobre tus datos:</p>
+            <h3>9. Derechos del usuario (Ley 1581 de 2012)</h3>
+            <p>De acuerdo con la Ley 1581 de 2012 de Protección de Datos en Colombia, como titular podés:</p>
             <ul>
-              <li>Derecho a conocer, actualizar y corregir tu información</li>
-              <li>Derecho a que la eliminemos: escribe <strong>"ELIMINAR"</strong> en el chat y borramos tu historial</li>
+              <li>Conocer, actualizar y rectificar tus datos personales.</li>
+              <li>Solicitar prueba del consentimiento otorgado y ser informado del uso que damos a tus datos.</li>
+              <li>Revocar el consentimiento y solicitar la supresión cuando no exista un deber legal de conservar los datos.</li>
+              <li>Solicitar la eliminación de tu historial de conversación escribiendo a <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a>; el procedimiento está en la sección <a href="#eliminacion-de-datos">Eliminación de datos</a>.</li>
+              <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC).</li>
             </ul>
           </div>
 
           <div class="policy-item">
-            <h3>6. Seguridad</h3>
-            <p>Guardamos la información cifrada, en infraestructura segura sobre Supabase, para evitar accesos no autorizados.</p>
+            <h3>10. Menores de edad</h3>
+            <p>El servicio está dirigido a empresas y no a menores de edad. No recolectamos de forma consciente datos de menores.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>11. Cookies</h3>
+            <p>La plataforma web usa una única cookie de sesión, estrictamente necesaria para mantener la sesión iniciada. No usamos cookies de publicidad ni de seguimiento de terceros.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>12. Uso de las plataformas de Meta</h3>
+            <p>El tratamiento de los datos obtenidos a través de WhatsApp, Instagram y Messenger cumple los Términos de la Plataforma de Meta y las Políticas para Desarrolladores. Esos datos se usan únicamente para prestar el servicio de asistente conversacional y no para finalidades incompatibles con ese propósito.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>13. Cambios en esta política</h3>
+            <p>Podemos actualizar esta política. Publicaremos la versión vigente en esta página con su fecha de actualización.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>14. Contacto</h3>
+            <p>Auren AI (Manuel Cruz Garrote) — <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a> — Bogotá D.C., Colombia.</p>
           </div>
         </div>
       </div>
+
+      <!-- ============================================================= -->
+      <!-- SECCIÓN 2 · ELIMINACIÓN DE DATOS                              -->
+      <!-- ============================================================= -->
+      <div class="policy-card reveal" id="eliminacion-de-datos">
+        <h2 class="section-title">Eliminación de datos</h2>
+        <p class="policy-updated">Última actualización: 7 de septiembre de 2026</p>
+
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>1. Alcance</h3>
+            <p>Esta sección explica cómo pedir la eliminación de los datos personales que Auren AI trata cuando alguien escribe a un negocio que usa nuestro asistente a través de WhatsApp, Instagram o Facebook Messenger. Complementa la <a href="#politica-privacidad">Política de Privacidad</a>.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>2. Qué guardamos de los usuarios finales</h3>
+            <ul>
+              <li>Número de teléfono o identificador de la plataforma.</li>
+              <li>Nombre de perfil público.</li>
+              <li>Contenido de los mensajes: texto, imágenes y documentos.</li>
+              <li>Metadatos de la conversación: fecha, hora y canal.</li>
+            </ul>
+          </div>
+
+          <div class="policy-item">
+            <h3>3. Cómo pedir la eliminación (usuarios finales)</h3>
+            <p>Enviá un correo electrónico a <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a> desde tu propio contacto, indicando:</p>
+            <ul>
+              <li>El número de teléfono o el usuario de Instagram/Messenger con el que escribiste.</li>
+              <li>El nombre del negocio al que le escribías.</li>
+              <li>El <strong>rango de fechas</strong> de las conversaciones que querés que se eliminen (por ejemplo, «del 1 de enero al 30 de junio de 2026»). Si querés borrar todo tu historial, indicalo expresamente.</li>
+            </ul>
+            <p>También podés pedírselo directamente al negocio con el que hablabas; él puede solicitar la eliminación en tu nombre.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>4. Qué hacemos y en cuánto tiempo</h3>
+            <p>Verificamos que la solicitud provenga del titular o de una persona autorizada y eliminamos o anonimizamos los datos del rango de fechas indicado dentro de los 90 días siguientes. Te confirmamos por el mismo correo por el que hiciste la solicitud.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>5. Qué podemos conservar</h3>
+            <p>Podemos conservar la información mínima que la ley nos obliga a guardar —por ejemplo, registros para efectos contables o para atender reclamos— durante el plazo legal correspondiente. Cumplido ese plazo, se elimina.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>6. Clientes que quieren cerrar su cuenta</h3>
+            <p>Si sos un Cliente de Auren AI y querés dar de baja tu cuenta: desconectá tus canales desde la sección <strong>Canales</strong> de la plataforma y escribinos a <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a> para el borrado completo de la cuenta y sus datos asociados, sujeto a los plazos legales de conservación de la información de facturación.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>7. Contacto</h3>
+            <p>Auren AI (Manuel Cruz Garrote) — <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a> — Bogotá D.C., Colombia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- SECCIÓN 3 · CONDICIONES DEL SERVICIO                          -->
+      <!-- ============================================================= -->
+      <div class="policy-card reveal" id="condiciones-del-servicio">
+        <h2 class="section-title">Condiciones del Servicio</h2>
+        <p class="policy-updated">Última actualización: 7 de septiembre de 2026</p>
+
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>1. Aceptación</h3>
+            <p>Estas Condiciones del Servicio («Condiciones») son un contrato entre Auren AI (Manuel Cruz Garrote) y la persona o empresa que crea una cuenta o usa el servicio («el Cliente»). Al registrarte o usar Auren AI, aceptás estas Condiciones y la <a href="#politica-privacidad">Política de Privacidad</a>, que forma parte integral de ellas. El servicio es de carácter empresarial (B2B) y está dirigido a quienes actúan con fines comerciales o profesionales.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>2. Descripción del servicio</h3>
+            <p>Auren AI es un asistente de inteligencia artificial que atiende conversaciones por WhatsApp, Instagram y Facebook Messenger en nombre del Cliente: responde consultas, comparte información del negocio, califica oportunidades de venta, avisa al Cliente cuando alguien quiere avanzar, y ofrece una plataforma web de configuración y reportes.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>3. Cuenta y conexión de canales</h3>
+            <p>El Cliente conecta sus propias cuentas de WhatsApp Business, Instagram y Facebook a través de los flujos oficiales de Meta. El Cliente declara que es titular de esas cuentas o que cuenta con autorización para usarlas, y es responsable de la exactitud de la información de configuración que carga (catálogo, precios, políticas).</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>4. Planes y pago</h3>
+            <p>El servicio se contrata por suscripción mensual, pagadera por adelantado. El plan y su precio se acuerdan al momento de contratar y pueden actualizarse avisando al Cliente con al menos 30 días de anticipación. Si un pago no se recibe a tiempo, Auren AI puede suspender el servicio tras un aviso previo. No se realizan reembolsos por periodos ya iniciados, salvo que la ley obligue a ello.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>5. Obligaciones del Cliente</h3>
+            <ul>
+              <li>Obtener el consentimiento de los usuarios finales para el tratamiento de sus datos y para recibir mensajes del asistente.</li>
+              <li>Cumplir las políticas de Meta aplicables, incluidas la WhatsApp Business Messaging Policy, la WhatsApp Commerce Policy y las políticas de Instagram y Messenger.</li>
+              <li>No usar el servicio para spam, mensajería masiva no solicitada, ni contenido ilegal, engañoso, discriminatorio o que infrinja derechos de terceros.</li>
+              <li>Supervisar el comportamiento del asistente. El Cliente es responsable frente a sus propios clientes por las comunicaciones enviadas en su nombre.</li>
+            </ul>
+          </div>
+
+          <div class="policy-item">
+            <h3>6. Tratamiento de datos personales</h3>
+            <p>Respecto de los datos personales de los usuarios finales, el Cliente actúa como Responsable del tratamiento y Auren AI como Encargado. Auren AI tratará esos datos únicamente conforme a las instrucciones del Cliente y a la Política de Privacidad, aplicará medidas de seguridad razonables y ayudará al Cliente a atender las solicitudes de los titulares. Esta cláusula constituye el acuerdo de tratamiento de datos entre las partes.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>7. Inteligencia artificial</h3>
+            <p>Las respuestas del asistente se generan de forma automática y pueden contener errores o imprecisiones. No constituyen asesoría profesional, legal, médica ni financiera. El Cliente decide qué información se carga en el asistente y define sus límites de actuación.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>8. Plataformas de terceros</h3>
+            <p>El servicio depende de las APIs de Meta y de OpenAI. Auren AI no responde por cambios, interrupciones, límites de uso, suspensiones o cierres de cuenta impuestos por esos terceros, ni por la disponibilidad de sus servicios.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>9. Disponibilidad</h3>
+            <p>Nos esforzamos por mantener el servicio disponible, pero se presta «tal cual» y «según disponibilidad», sin garantía de operación ininterrumpida o libre de errores. Podemos realizar tareas de mantenimiento que afecten temporalmente el servicio.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>10. Propiedad intelectual</h3>
+            <p>El software, la marca, la plataforma y la documentación de Auren AI son de su titular. El Cliente conserva la titularidad de su contenido (catálogo, textos, datos) y concede a Auren AI una licencia limitada, no exclusiva y revocable para tratarlo con el único fin de prestar el servicio.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>11. Limitación de responsabilidad</h3>
+            <p>En la medida permitida por la ley, la responsabilidad total acumulada de Auren AI frente al Cliente por cualquier reclamo relacionado con el servicio se limita al monto pagado por el Cliente en los tres (3) meses anteriores al hecho que originó el reclamo. Auren AI no responde por lucro cesante, pérdida de datos, pérdida de oportunidades comerciales ni daños indirectos o incidentales.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>12. Suspensión y terminación</h3>
+            <p>Cualquiera de las partes puede terminar la relación con un aviso previo de 30 días. Auren AI puede suspender o terminar el servicio de inmediato en caso de incumplimiento grave, falta de pago o violación de las políticas de Meta. Al terminar, cesa el acceso del Cliente y sus datos se eliminan conforme a la Política de Privacidad; el Cliente puede solicitar una exportación de su información dentro de los 15 días siguientes a la terminación.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>13. Cambios en las Condiciones</h3>
+            <p>Podemos modificar estas Condiciones. Publicaremos la versión actualizada en esta página con su fecha de vigencia. El uso continuado del servicio después de esa fecha implica la aceptación de los cambios.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>14. Ley aplicable y jurisdicción</h3>
+            <p>Estas Condiciones se rigen por las leyes de la República de Colombia. Cualquier controversia se someterá a los jueces competentes de Bogotá D.C., sin perjuicio de los derechos que las normas de protección al consumidor reconozcan al Cliente cuando resulten aplicables.</p>
+          </div>
+
+          <div class="policy-item">
+            <h3>15. Contacto</h3>
+            <p>Auren AI (Manuel Cruz Garrote) — <a href="mailto:manuel.cruz@getaurenai.com">manuel.cruz@getaurenai.com</a> — Bogotá D.C., Colombia.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
@@ -329,10 +578,12 @@
     <span class="footer-brand">AUREN AI</span>
     <div class="footer-links">
       <a href="proceso.html">Proceso</a>
-      <a href="privacidad.html">Privacidad</a>
+      <a href="privacidad.html#politica-privacidad">Privacidad</a>
+      <a href="privacidad.html#condiciones-del-servicio">Términos</a>
+      <a href="privacidad.html#eliminacion-de-datos">Eliminación de datos</a>
       <a href="https://wa.me/573502270096">WhatsApp</a>
     </div>
-    <span class="footer-meta">Bogotá, Colombia · © 2026 Auren AI S.A.S.</span>
+    <span class="footer-meta">Bogotá, Colombia · © 2026 Auren AI</span>
   </div>
 </footer>
 
