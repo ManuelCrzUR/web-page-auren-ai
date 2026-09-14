@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auren AI | Cómo funciona</title>
+<title>Auren AI | Demo en vivo</title>
 <link rel="icon" type="image/png" href="logo.png">
 <style>
   :root{
@@ -210,7 +210,21 @@
   .section-head.center{ text-align:center; }
   .section-head h2{ margin-top:10px; }
 
-  /* ---------- steps ---------- */
+  /* ---------- channel cards ---------- */
+  .channel-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+  @media (max-width:900px){ .channel-grid{ grid-template-columns:1fr; } }
+  .channel-card{
+    display:flex; flex-direction:column;
+    background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:30px;
+    transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .channel-card:hover{ transform:translateY(-4px); border-color:var(--line-strong); box-shadow:0 20px 40px rgba(0,0,0,0.28); }
+  .channel-icon{ width:40px; height:40px; margin-bottom:18px; }
+  .channel-card h3{ font-size:1.05rem; }
+  .channel-card p{ margin-top:10px; font-size:.88rem; line-height:1.6; color:var(--muted); flex:1; }
+  .channel-card .btn{ margin-top:22px; }
+
+  /* ---------- steps (reused for "how it works" style) ---------- */
   .steps-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; }
   @media (max-width:960px){ .steps-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:560px){ .steps-grid{ grid-template-columns:1fr; } }
@@ -240,7 +254,7 @@
   .footer-row{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; }
   .footer-brand{ font-weight:800; font-size:1.05rem; }
   .footer-meta{ font-size:11.5px; color:var(--muted-2); letter-spacing:.03em; }
-  .footer-links{ display:flex; gap:22px; }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:22px; }
   .footer-links a{ font-size:12px; color:var(--muted); transition:color .2s; }
   .footer-links a:hover{ color:var(--paper); }
 </style>
@@ -257,8 +271,7 @@
 
     <div class="nav-links">
       <a href="index.html" class="nav-link">Inicio</a>
-      <a href="index.html#precios" class="nav-link">Planes</a>
-      <a href="proceso.html" class="nav-link active">Proceso</a>
+      <a href="demo.html" class="nav-link active">Demo</a>
       <a href="privacidad.html" class="nav-link">Privacidad</a>
     </div>
 
@@ -276,8 +289,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
   <a href="index.html">Inicio</a>
-  <a href="index.html#precios">Planes</a>
-  <a href="proceso.html">Proceso</a>
+  <a href="demo.html">Demo</a>
   <a href="privacidad.html">Privacidad</a>
   <a href="https://app.getaurenai.com/login" class="btn btn-ghost">Iniciar sesión</a>
   <a href="https://wa.me/573181702677" class="btn btn-primary">Hablar con un asesor</a>
@@ -285,39 +297,35 @@
 
 <header class="page-header">
   <div class="max">
-    <span class="eyebrow glow reveal in">Así se pone a andar</span>
-    <h1 class="reveal in d1">De cero a contestando solo, en unos días.</h1>
-    <p class="lede reveal in d2">No es un proyecto de meses ni necesitas saber de tecnología. Así es como Alex empieza a trabajar en tu negocio.</p>
+    <span class="eyebrow glow reveal in">Pruébalo tú mismo</span>
+    <h1 class="reveal in d1">Esto no es una demo grabada.<br>Es Alex, respondiendo ahora mismo.</h1>
+    <p class="lede reveal in d2">No hicimos un video ni una simulación. Estos son los canales reales de Auren. Escríbele a Alex con tus propias preguntas y mira cómo responde en segundos, tal cual lo haría en tu negocio.</p>
   </div>
 </header>
 
 <main>
   <section class="band">
     <div class="max">
-      <div class="steps-grid reveal">
-        <article class="step">
-          <span class="step-num">01</span>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="var(--glow-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
-          <h3>Te conectamos</h3>
-          <p>Instalamos a Alex directo en tu WhatsApp Business, el mismo número que ya usas. Nada de números nuevos ni trucos raros que te lo puedan bloquear.</p>
+      <div class="channel-grid reveal">
+        <article class="channel-card">
+          <svg class="channel-icon" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+          <h3>WhatsApp</h3>
+          <p>El canal donde más venden los negocios en Colombia. Escríbele a Alex por acá y compruébalo tú mismo, con el mismo número que usarías con tus clientes.</p>
+          <a href="https://wa.me/573181702677" target="_blank" rel="noopener" class="btn btn-primary btn-block">Escribir por WhatsApp</a>
         </article>
-        <article class="step">
-          <span class="step-num">02</span>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="var(--glow-bright)"><circle cx="5" cy="7" r="1.5"/><rect x="9" y="6" width="11" height="2" rx="1"/><circle cx="5" cy="12" r="1.5"/><rect x="9" y="11" width="11" height="2" rx="1"/><circle cx="5" cy="17" r="1.5"/><rect x="9" y="16" width="8" height="2" rx="1"/></svg>
-          <h3>Le enseñamos tu negocio</h3>
-          <p>Le pasamos tu catálogo, tus precios y cómo hablas con tus clientes. Una sola vez, y desde ahí ya sabe responder como alguien de tu equipo.</p>
+
+        <article class="channel-card">
+          <svg class="channel-icon" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.1" fill="#E1306C" stroke="none"/></svg>
+          <h3>Instagram</h3>
+          <p>Mándale un DM a nuestra cuenta de Instagram y mira cómo responde en segundos, igual que le respondería a un cliente tuyo.</p>
+          <a href="https://www.instagram.com/ai.auren/" target="_blank" rel="noopener" class="btn btn-primary btn-block">Escribir por Instagram</a>
         </article>
-        <article class="step">
-          <span class="step-num">03</span>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="var(--glow-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>
-          <h3>Distingue quién va en serio</h3>
-          <p>No todos los que escriben quieren comprar ya. Alex identifica quién sí está listo, para que sepas a quién llamar primero.</p>
-        </article>
-        <article class="step">
-          <span class="step-num">04</span>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="var(--glow-bright)"><polygon points="13,2 4,14 11,14 10,22 20,10 13,10"/></svg>
-          <h3>Queda contestando solo</h3>
-          <p>Se activa y empieza a contestar de inmediato. Tú solo entras cuando ya hay alguien listo para cerrar.</p>
+
+        <article class="channel-card">
+          <svg class="channel-icon" viewBox="0 0 24 24" fill="#0084FF" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.19.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.99-.88a.9.9 0 0 1 .6-.04c1.04.29 2.16.44 3.31.44 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.93 4.65c-.47.74-1.47.93-2.18.41l-2.33-1.75a.6.6 0 0 0-.72 0l-3.15 2.39c-.42.32-.97-.18-.69-.63l2.93-4.65c.47-.74 1.47-.93 2.18-.41l2.33 1.75a.6.6 0 0 0 .72 0l3.15-2.39c.42-.32.97.18.69.63z"/></svg>
+          <h3>Facebook</h3>
+          <p>Escríbele por Messenger a nuestra página de Facebook. Es el mismo Alex, solo que atendiendo un canal distinto.</p>
+          <a href="https://www.facebook.com/profile.php?id=61586114835416" target="_blank" rel="noopener" class="btn btn-primary btn-block">Escribir por Facebook</a>
         </article>
       </div>
     </div>
@@ -326,21 +334,21 @@
   <section class="band alt">
     <div class="max">
       <div class="section-head center reveal">
-        <span class="eyebrow">Por qué funciona</span>
-        <h2>No es magia. Es que está bien hecho.</h2>
+        <span class="eyebrow">Por qué probarlo así</span>
+        <h2>Así se va a sentir para tus clientes</h2>
       </div>
       <div class="trust-strip reveal">
         <div class="trust-item">
-          <h3>Contesta en menos de 3 segundos</h3>
-          <p>Mientras más rápido contestas, más caliente sigue el cliente. Alex no se demora nunca, ni siquiera en la hora pico.</p>
+          <h3>No se pierde la venta por no contestar a tiempo</h3>
+          <p>Escríbele a cualquier hora y vas a ver que contesta al toque, sin importar si es de noche, fin de semana o festivo.</p>
         </div>
         <div class="trust-item">
-          <h3>Tus datos son tuyos</h3>
-          <p>La información de tus clientes se guarda cifrada y no se comparte con nadie. Es tuya, punto.</p>
+          <h3>Se siente como una persona, no un bot</h3>
+          <p>No es un menú de opciones ni respuestas genéricas. Alex conversa, resuelve dudas y se adapta a lo que le preguntes.</p>
         </div>
         <div class="trust-item">
-          <h3>No te manda cualquier cosa</h3>
-          <p>Solo te avisa cuando alguien de verdad quiere comprar. Nada de notificaciones por cada saludo.</p>
+          <h3>Sabe cuándo pasarte la conversación</h3>
+          <p>Cuando el cliente ya está listo para comprar o agendar, Alex avisa. Así funcionaría también en tu negocio.</p>
         </div>
       </div>
     </div>
@@ -348,8 +356,8 @@
 
   <section class="band closing">
     <div class="max">
-      <h2 class="reveal">¿Listo para dejar de perder ventas?</h2>
-      <p class="lede reveal d1">Actívalo esta semana y empieza a contestar rápido desde ya.</p>
+      <h2 class="reveal">¿Te gustó cómo contestó?</h2>
+      <p class="lede reveal d1">Así puede estar respondiendo tu negocio esta misma semana.</p>
       <div class="closing-ctas reveal d2">
         <a href="index.html#precios" class="btn btn-primary">Ver planes</a>
         <a href="https://wa.me/573181702677" class="btn btn-ghost">Hablar con un asesor</a>
@@ -362,11 +370,13 @@
   <div class="max footer-row">
     <span class="footer-brand">AUREN AI</span>
     <div class="footer-links">
-      <a href="proceso.html">Proceso</a>
+      <a href="demo.html">Demo</a>
       <a href="privacidad.html#politica-privacidad">Privacidad</a>
       <a href="privacidad.html#condiciones-del-servicio">Términos</a>
       <a href="privacidad.html#eliminacion-de-datos">Eliminación de datos</a>
       <a href="https://wa.me/573181702677">WhatsApp</a>
+      <a href="https://www.instagram.com/ai.auren/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61586114835416" target="_blank" rel="noopener">Facebook</a>
     </div>
     <span class="footer-meta">Bogotá, Colombia · © 2026 Auren AI</span>
   </div>
