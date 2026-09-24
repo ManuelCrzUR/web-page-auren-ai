@@ -214,9 +214,9 @@
 
 <header class="page-header">
   <div class="max">
-    <span class="eyebrow glow reveal in">Hablemos de tu negocio</span>
-    <h1 class="reveal in d1">Agendá una demo con nuestro equipo</h1>
-    <p class="lede reveal in d2">Dejanos tus datos y te contactamos por WhatsApp para mostrarte Auren AI funcionando en un caso real de tu negocio.</p>
+    <span class="eyebrow glow reveal in">Probalo gratis 15 días</span>
+    <h1 class="reveal in d1">Empezá tu prueba gratis ahora mismo</h1>
+    <p class="lede reveal in d2">Dejanos tus datos y te creamos tu cuenta al instante — te llega el acceso a tu correo en segundos, sin esperar a que te contactemos.</p>
   </div>
 </header>
 
@@ -238,7 +238,7 @@
           <input id="telefono" placeholder="300 123 4567" inputmode="tel">
         </div>
         <div class="field">
-          <label for="correo">Correo <span class="opcional">(opcional)</span></label>
+          <label for="correo">Correo</label>
           <input id="correo" type="email" placeholder="juan@negocio.com">
         </div>
         <div class="field">
@@ -255,8 +255,8 @@
         <div class="check">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h3>¡Listo! Ya recibimos tu solicitud</h3>
-        <p>Te vamos a escribir por WhatsApp en las próximas horas para coordinar tu demo.</p>
+        <h3>¡Listo! Revisá tu correo</h3>
+        <p>Te mandamos un correo con el link para crear tu cuenta y empezar tu prueba gratis de 15 días — ya mismo.</p>
       </div>
     </div>
   </div>
@@ -291,8 +291,8 @@
     const msgEl = document.getElementById('form-msg');
     msgEl.innerHTML = '';
 
-    if (!(nombre && negocio && telefono)){
-      msgEl.innerHTML = '<div class="msg err">Completá al menos tu nombre, negocio y WhatsApp.</div>';
+    if (!(nombre && negocio && telefono && correo)){
+      msgEl.innerHTML = '<div class="msg err">Completá tu nombre, negocio, WhatsApp y correo — ahí te mandamos el acceso.</div>';
       return;
     }
 
